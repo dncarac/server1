@@ -52,22 +52,30 @@ pass
 # Test below
 #===============================================================================
 
+if __name__ == '__main__':
 
-def tester():
-#     r = rq.get(srv)
-#     print(r)
-    r = rq.get(srv, headers=up_params)
-    print(r)
-    print(r.text)
-#     print(r.text)
-    print("\nHeaders --")
-    for h in r.headers:
-        print("    %s: %s" % (h, r.headers[h]))
-    print("\n*** test complete ***")
-    return
+    def tester():
 
+        r = rq.get(srv, headers=up_params)
+        print(r)
+        assert str(r) == "<Response [200]>"
+        print(r.text)
+        assert r.text == '''<html>
+    <head>
+        <title>Python is awesome!</title>
+    </head>
+    <body>
+        <h1>Typelines</h1>
+        <p>Congratulations! The HTTP Server is working!</p>
+    </body>
+</html>'''
+        print("\nHeaders --")
+        for h in r.headers:
+            print("    %s: %s" % (h, r.headers[h]))
+        print("\n*** test complete ***")
+        return
 
-tthread = Thread(target=tester, name="test thread")
-tthread.start()
-bt.run(host=cfg.SERVER_NAME, port=cfg.SERVER_PORT, debug=True)
-tthread.join()
+    tthread = Thread(target=tester, name="test thread")
+    tthread.start()
+    bt.run(host=cfg.SERVER_NAME, port=cfg.SERVER_PORT, debug=True)
+    tthread.join()
