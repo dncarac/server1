@@ -1,0 +1,4 @@
+bottle==0.12.17
+canister==1.5.1
+PyJWT==1.7.1
+virtualenv==16.6.0
