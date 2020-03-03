@@ -1,0 +1,5 @@
+{
+  "Server.py::test_url_TL_valid_hdrs_and_file": true,
+  "TrialServer.py::test_url_TL_valid_hdrs_and_file": true,
+  "TrialServer.py::test_url_TL_valid_hdrs_file": true
+}

@@ -1,0 +1,8 @@
+{
+  "test_server.py::test_function_existence[Cancel]": true,
+  "test_server.py::test_function_existence[GetClientConfig]": true,
+  "test_server.py::test_function_existence[GetDistractionData]": true,
+  "test_server.py::test_function_existence[GetSummary]": true,
+  "test_server.py::test_function_existence[GetTypingData]": true,
+  "test_server.py::test_function_existence[SendFile]": true
+}

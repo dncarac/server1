@@ -1,0 +1,623 @@
+2020-01-15 17:27:30,426 INFO     [MainThread]   ============
+2020-01-15 17:27:30,426 INFO     [MainThread]   Initializing
+2020-01-15 17:27:30,441 INFO     [MainThread]   ============
+2020-01-15 17:27:30,441 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 17:27:30,442 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 17:27:30,442 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:27:30,442 INFO     [MainThread]   catchall                       = True
+2020-01-15 17:27:30,442 INFO     [MainThread]   autojson                       = True
+2020-01-15 17:27:30,442 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 17:27:30,443 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 17:27:30,443 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 17:27:30,443 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 17:27:30,443 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 17:27:30,443 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:27:30,444 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 17:27:33,410 INFO     [127.0.0.1-s4cbBh]   Response: 200 (0ms)
+2020-01-15 17:27:33,410 INFO     [127.0.0.1-s4cbBh]   Response: 200 (0ms)
+2020-01-15 17:28:21,950 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:28:21,950 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:28:21,950 INFO     [127.0.0.1-...]   Session created: o8AmG6mh3mPFp62K/WRlOTwB
+2020-01-15 17:28:21,950 INFO     [127.0.0.1-...]   Session created: o8AmG6mh3mPFp62K/WRlOTwB
+2020-01-15 17:28:21,957 INFO     [127.0.0.1-o8AmG6]   Response: 200 (6ms)
+2020-01-15 17:28:21,957 INFO     [127.0.0.1-o8AmG6]   Response: 200 (6ms)
+2020-01-15 17:36:38,943 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:36:38,943 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:36:38,943 INFO     [127.0.0.1-...]   Session created: 9fCXU2F9mHxQcKe3luIBaSxX
+2020-01-15 17:36:38,943 INFO     [127.0.0.1-...]   Session created: 9fCXU2F9mHxQcKe3luIBaSxX
+2020-01-15 17:36:39,202 INFO     [127.0.0.1-9fCXU2]   Response: 200 (259ms)
+2020-01-15 17:36:39,202 INFO     [127.0.0.1-9fCXU2]   Response: 200 (259ms)
+2020-01-15 17:36:48,703 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:36:48,703 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:36:48,703 INFO     [127.0.0.1-...]   Session created: 5BTjOMPTf0rrFFs3ayGrTrh9
+2020-01-15 17:36:48,703 INFO     [127.0.0.1-...]   Session created: 5BTjOMPTf0rrFFs3ayGrTrh9
+2020-01-15 17:36:48,709 INFO     [127.0.0.1-5BTjOM]   Response: 200 (6ms)
+2020-01-15 17:36:48,709 INFO     [127.0.0.1-5BTjOM]   Response: 200 (6ms)
+2020-01-15 17:44:08,268 INFO     [MainThread]   ============
+2020-01-15 17:44:08,268 INFO     [MainThread]   Initializing
+2020-01-15 17:44:08,268 INFO     [MainThread]   ============
+2020-01-15 17:44:08,268 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 17:44:08,268 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 17:44:08,268 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:44:08,268 INFO     [MainThread]   catchall                       = True
+2020-01-15 17:44:08,268 INFO     [MainThread]   autojson                       = True
+2020-01-15 17:44:08,268 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 17:44:08,268 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 17:44:08,268 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 17:44:08,268 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 17:44:08,268 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 17:44:08,268 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:44:08,268 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 17:44:10,961 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:44:10,961 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:44:10,961 INFO     [127.0.0.1-...]   Session created: qJn/wBm7D8GCb/A9GXPAvMqo
+2020-01-15 17:44:10,961 INFO     [127.0.0.1-...]   Session created: qJn/wBm7D8GCb/A9GXPAvMqo
+2020-01-15 17:44:10,966 INFO     [127.0.0.1-qJn/wB]   Response: 200 (5ms)
+2020-01-15 17:44:10,966 INFO     [127.0.0.1-qJn/wB]   Response: 200 (5ms)
+2020-01-15 17:44:27,750 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:44:27,750 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:44:27,750 INFO     [127.0.0.1-...]   Session created: uZFJpifI3P2UUBeK/yUonwd3
+2020-01-15 17:44:27,750 INFO     [127.0.0.1-...]   Session created: uZFJpifI3P2UUBeK/yUonwd3
+2020-01-15 17:44:28,041 INFO     [127.0.0.1-uZFJpi]   Response: 200 (291ms)
+2020-01-15 17:44:28,041 INFO     [127.0.0.1-uZFJpi]   Response: 200 (291ms)
+2020-01-15 17:47:53,650 INFO     [MainThread]   ============
+2020-01-15 17:47:53,650 INFO     [MainThread]   Initializing
+2020-01-15 17:47:53,650 INFO     [MainThread]   ============
+2020-01-15 17:47:53,650 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 17:47:53,650 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 17:47:53,650 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:47:53,650 INFO     [MainThread]   catchall                       = True
+2020-01-15 17:47:53,650 INFO     [MainThread]   autojson                       = True
+2020-01-15 17:47:53,650 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 17:47:53,650 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 17:47:53,650 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 17:47:53,650 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 17:47:53,650 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 17:47:53,650 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:47:53,650 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 17:47:56,378 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:47:56,378 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 17:47:56,378 INFO     [127.0.0.1-...]   Session created: hwgcNsAAsTni542br7sAHgTF
+2020-01-15 17:47:56,378 INFO     [127.0.0.1-...]   Session created: hwgcNsAAsTni542br7sAHgTF
+2020-01-15 17:47:56,385 INFO     [127.0.0.1-hwgcNs]   Response: 200 (7ms)
+2020-01-15 17:47:56,385 INFO     [127.0.0.1-hwgcNs]   Response: 200 (7ms)
+2020-01-15 17:48:11,601 INFO     [MainThread]   ============
+2020-01-15 17:48:11,601 INFO     [MainThread]   Initializing
+2020-01-15 17:48:11,601 INFO     [MainThread]   ============
+2020-01-15 17:48:11,601 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 17:48:11,601 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 17:48:11,601 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:48:11,601 INFO     [MainThread]   catchall                       = True
+2020-01-15 17:48:11,601 INFO     [MainThread]   autojson                       = True
+2020-01-15 17:48:11,601 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 17:48:11,601 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 17:48:11,601 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 17:48:11,601 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 17:48:11,601 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 17:48:11,601 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:48:11,601 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 17:48:20,219 INFO     [MainThread]   ============
+2020-01-15 17:48:20,219 INFO     [MainThread]   Initializing
+2020-01-15 17:48:20,219 INFO     [MainThread]   ============
+2020-01-15 17:48:20,219 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 17:48:20,219 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 17:48:20,219 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:48:20,219 INFO     [MainThread]   catchall                       = True
+2020-01-15 17:48:20,219 INFO     [MainThread]   autojson                       = True
+2020-01-15 17:48:20,219 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 17:48:20,219 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 17:48:20,219 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 17:48:20,219 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 17:48:20,219 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 17:48:20,219 INFO     [MainThread]   ------------------------------------------
+2020-01-15 17:48:20,219 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:02:07,327 INFO     [MainThread]   ============
+2020-01-15 18:02:07,327 INFO     [MainThread]   Initializing
+2020-01-15 18:02:07,327 INFO     [MainThread]   ============
+2020-01-15 18:02:07,327 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:02:07,327 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:02:07,327 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:02:07,327 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:02:07,327 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:02:07,327 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:02:07,327 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:02:07,327 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:02:07,327 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:02:07,327 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:02:07,327 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:02:07,327 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:03:48,547 INFO     [MainThread]   ============
+2020-01-15 18:03:48,547 INFO     [MainThread]   Initializing
+2020-01-15 18:03:48,547 INFO     [MainThread]   ============
+2020-01-15 18:03:48,547 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:03:48,547 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:03:48,547 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:03:48,547 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:03:48,547 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:03:48,547 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:03:48,547 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:03:48,547 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:03:48,547 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:03:48,547 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:03:48,547 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:03:48,547 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:05:00,820 INFO     [MainThread]   ============
+2020-01-15 18:05:00,820 INFO     [MainThread]   Initializing
+2020-01-15 18:05:00,820 INFO     [MainThread]   ============
+2020-01-15 18:05:00,820 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:05:00,820 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:05:00,820 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:05:00,820 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:05:00,836 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:05:00,836 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:05:00,836 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:05:00,836 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:05:00,836 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:05:00,836 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:05:00,836 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:05:00,836 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:05:12,841 INFO     [MainThread]   ============
+2020-01-15 18:05:12,841 INFO     [MainThread]   Initializing
+2020-01-15 18:05:12,841 INFO     [MainThread]   ============
+2020-01-15 18:05:12,841 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:05:12,841 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:05:12,841 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:05:12,841 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:05:12,841 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:05:12,841 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:05:12,841 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:05:12,841 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:05:12,841 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:05:12,841 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:05:12,841 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:05:12,841 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:09:32,423 INFO     [MainThread]   ============
+2020-01-15 18:09:32,423 INFO     [MainThread]   Initializing
+2020-01-15 18:09:32,423 INFO     [MainThread]   ============
+2020-01-15 18:09:32,423 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:09:32,423 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:09:32,423 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:09:32,423 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:09:32,423 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:09:32,423 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:09:32,423 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:09:32,423 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:09:32,423 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:09:32,423 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:09:32,423 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:09:32,423 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:09:46,069 INFO     [MainThread]   ============
+2020-01-15 18:09:46,069 INFO     [MainThread]   Initializing
+2020-01-15 18:09:46,069 INFO     [MainThread]   ============
+2020-01-15 18:09:46,085 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:09:46,085 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:09:46,085 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:09:46,085 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:09:46,085 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:09:46,085 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:09:46,085 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:09:46,085 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:09:46,085 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:09:46,085 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:09:46,085 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:09:46,085 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:09:48,759 INFO     [127.0.0.1-hRcbqu]   Response: 200 (4ms)
+2020-01-15 18:09:48,759 INFO     [127.0.0.1-hRcbqu]   Response: 200 (4ms)
+2020-01-15 18:09:56,742 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:09:56,742 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:09:56,742 INFO     [127.0.0.1-...]   Session created: JRY6DNkAVBsCbCKjgJ0rwYMt
+2020-01-15 18:09:56,742 INFO     [127.0.0.1-...]   Session created: JRY6DNkAVBsCbCKjgJ0rwYMt
+2020-01-15 18:09:56,748 INFO     [127.0.0.1-JRY6DN]   Response: 200 (6ms)
+2020-01-15 18:09:56,748 INFO     [127.0.0.1-JRY6DN]   Response: 200 (6ms)
+2020-01-15 18:12:38,414 INFO     [MainThread]   ============
+2020-01-15 18:12:38,414 INFO     [MainThread]   Initializing
+2020-01-15 18:12:38,414 INFO     [MainThread]   ============
+2020-01-15 18:12:38,414 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:12:38,414 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:12:38,414 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:38,414 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:12:38,414 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:12:38,414 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:12:38,414 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:12:38,430 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:12:38,430 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:12:38,430 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:12:38,430 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:38,430 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:12:41,132 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:12:41,132 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:12:41,132 INFO     [127.0.0.1-...]   Session created: K+XuA2/JH/tvuz7zVbJIoPYE
+2020-01-15 18:12:41,132 INFO     [127.0.0.1-...]   Session created: K+XuA2/JH/tvuz7zVbJIoPYE
+2020-01-15 18:12:41,139 INFO     [127.0.0.1-K+XuA2]   Response: 200 (6ms)
+2020-01-15 18:12:41,139 INFO     [127.0.0.1-K+XuA2]   Response: 200 (6ms)
+2020-01-15 18:12:49,464 INFO     [MainThread]   ============
+2020-01-15 18:12:49,464 INFO     [MainThread]   Initializing
+2020-01-15 18:12:49,464 INFO     [MainThread]   ============
+2020-01-15 18:12:49,464 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:12:49,464 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:12:49,464 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:49,464 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:12:49,464 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:12:49,464 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:12:49,464 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:12:49,464 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:12:49,480 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:12:49,480 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:12:49,480 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:49,480 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:12:54,652 INFO     [MainThread]   ============
+2020-01-15 18:12:54,652 INFO     [MainThread]   Initializing
+2020-01-15 18:12:54,652 INFO     [MainThread]   ============
+2020-01-15 18:12:54,652 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:12:54,652 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:12:54,652 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:54,652 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:12:54,652 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:12:54,652 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:12:54,652 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:12:54,652 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:12:54,652 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:12:54,652 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:12:54,652 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:12:54,652 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:12:57,357 INFO     [127.0.0.1-xb2pur]   Response: 200 (10ms)
+2020-01-15 18:12:57,357 INFO     [127.0.0.1-xb2pur]   Response: 200 (10ms)
+2020-01-15 18:13:17,454 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:13:17,454 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:13:17,457 INFO     [127.0.0.1-...]   Session created: SWh4z3+IwhV6X/IC0VbBN2+H
+2020-01-15 18:13:17,457 INFO     [127.0.0.1-...]   Session created: SWh4z3+IwhV6X/IC0VbBN2+H
+2020-01-15 18:13:17,458 INFO     [127.0.0.1-SWh4z3]   Response: 200 (3ms)
+2020-01-15 18:13:17,458 INFO     [127.0.0.1-SWh4z3]   Response: 200 (3ms)
+2020-01-15 18:15:22,832 INFO     [MainThread]   ============
+2020-01-15 18:15:22,832 INFO     [MainThread]   Initializing
+2020-01-15 18:15:22,832 INFO     [MainThread]   ============
+2020-01-15 18:15:22,832 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:15:22,832 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:15:22,832 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:22,832 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:15:22,832 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:15:22,832 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:15:22,832 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:15:22,832 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:15:22,832 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:15:22,832 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:15:22,832 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:22,832 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:15:25,567 INFO     [127.0.0.1-EpQVER]   Response: 200 (8ms)
+2020-01-15 18:15:25,567 INFO     [127.0.0.1-EpQVER]   Response: 200 (8ms)
+2020-01-15 18:15:32,045 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:15:32,045 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:15:32,045 INFO     [127.0.0.1-...]   Session created: bZP4iMJFPlJZIWn/fAvGPjiE
+2020-01-15 18:15:32,045 INFO     [127.0.0.1-...]   Session created: bZP4iMJFPlJZIWn/fAvGPjiE
+2020-01-15 18:15:32,048 INFO     [127.0.0.1-bZP4iM]   Response: 200 (3ms)
+2020-01-15 18:15:32,048 INFO     [127.0.0.1-bZP4iM]   Response: 200 (3ms)
+2020-01-15 18:15:47,021 INFO     [MainThread]   ============
+2020-01-15 18:15:47,021 INFO     [MainThread]   Initializing
+2020-01-15 18:15:47,021 INFO     [MainThread]   ============
+2020-01-15 18:15:47,035 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:15:47,035 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:15:47,035 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:47,035 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:15:47,035 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:15:47,035 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:15:47,035 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:15:47,035 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:15:47,035 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:15:47,035 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:15:47,035 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:47,035 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:15:49,790 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:15:49,790 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:15:49,790 INFO     [127.0.0.1-...]   Session created: kIb6cUpvuWPzORzjGFhni4m0
+2020-01-15 18:15:49,790 INFO     [127.0.0.1-...]   Session created: kIb6cUpvuWPzORzjGFhni4m0
+2020-01-15 18:15:49,796 INFO     [127.0.0.1-kIb6cU]   Response: 200 (6ms)
+2020-01-15 18:15:49,796 INFO     [127.0.0.1-kIb6cU]   Response: 200 (6ms)
+2020-01-15 18:15:58,436 INFO     [MainThread]   ============
+2020-01-15 18:15:58,436 INFO     [MainThread]   Initializing
+2020-01-15 18:15:58,436 INFO     [MainThread]   ============
+2020-01-15 18:15:58,436 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:15:58,436 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:15:58,436 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:58,436 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:15:58,436 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:15:58,436 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:15:58,436 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:15:58,436 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:15:58,436 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:15:58,436 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:15:58,436 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:15:58,436 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:16:01,127 INFO     [127.0.0.1-I4c8+F]   Response: 200 (9ms)
+2020-01-15 18:16:01,127 INFO     [127.0.0.1-I4c8+F]   Response: 200 (9ms)
+2020-01-15 18:16:33,502 INFO     [MainThread]   ============
+2020-01-15 18:16:33,502 INFO     [MainThread]   Initializing
+2020-01-15 18:16:33,502 INFO     [MainThread]   ============
+2020-01-15 18:16:33,502 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:16:33,502 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:16:33,502 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:16:33,502 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:16:33,502 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:16:33,502 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:16:33,502 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:16:33,502 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:16:33,502 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:16:33,502 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:16:33,502 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:16:33,502 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:16:36,166 INFO     [127.0.0.1-YdoyUV]   Response: 200 (12ms)
+2020-01-15 18:16:36,166 INFO     [127.0.0.1-YdoyUV]   Response: 200 (12ms)
+2020-01-15 18:16:48,641 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:16:48,641 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:16:48,641 INFO     [127.0.0.1-...]   Session created: MEj9Y6kpJH/Nz6N9cSI18RAT
+2020-01-15 18:16:48,641 INFO     [127.0.0.1-...]   Session created: MEj9Y6kpJH/Nz6N9cSI18RAT
+2020-01-15 18:16:48,647 INFO     [127.0.0.1-MEj9Y6]   Response: 200 (6ms)
+2020-01-15 18:16:48,647 INFO     [127.0.0.1-MEj9Y6]   Response: 200 (6ms)
+2020-01-15 18:31:47,430 INFO     [MainThread]   ============
+2020-01-15 18:31:47,430 INFO     [MainThread]   Initializing
+2020-01-15 18:31:47,430 INFO     [MainThread]   ============
+2020-01-15 18:31:47,430 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:31:47,430 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:31:47,430 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:31:47,430 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:31:47,430 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:31:47,430 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:31:47,430 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:31:47,430 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:31:47,430 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:31:47,430 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:31:47,430 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:31:47,430 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:31:50,118 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:31:50,118 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:31:50,124 INFO     [127.0.0.1-...]   Session created: t2TGblnPybgUbvMieDEV3Gl4
+2020-01-15 18:31:50,124 INFO     [127.0.0.1-...]   Session created: t2TGblnPybgUbvMieDEV3Gl4
+2020-01-15 18:31:50,126 INFO     [127.0.0.1-t2TGbl]   Response: 200 (8ms)
+2020-01-15 18:31:50,126 INFO     [127.0.0.1-t2TGbl]   Response: 200 (8ms)
+2020-01-15 18:31:57,538 INFO     [MainThread]   ============
+2020-01-15 18:31:57,538 INFO     [MainThread]   Initializing
+2020-01-15 18:31:57,538 INFO     [MainThread]   ============
+2020-01-15 18:31:57,553 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:31:57,553 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:31:57,553 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:31:57,553 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:31:57,553 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:31:57,553 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:31:57,553 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:31:57,553 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:31:57,553 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:31:57,553 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:31:57,553 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:31:57,553 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:32:00,209 INFO     [127.0.0.1-HXEUcb]   Response: 200 (9ms)
+2020-01-15 18:32:00,209 INFO     [127.0.0.1-HXEUcb]   Response: 200 (9ms)
+2020-01-15 18:32:15,113 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:32:15,113 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:32:15,113 INFO     [127.0.0.1-...]   Session created: Nj3F2jPcTdizxS7x1AYSmIW2
+2020-01-15 18:32:15,113 INFO     [127.0.0.1-...]   Session created: Nj3F2jPcTdizxS7x1AYSmIW2
+2020-01-15 18:32:15,119 INFO     [127.0.0.1-Nj3F2j]   Response: 200 (6ms)
+2020-01-15 18:32:15,119 INFO     [127.0.0.1-Nj3F2j]   Response: 200 (6ms)
+2020-01-15 18:33:27,120 INFO     [MainThread]   ============
+2020-01-15 18:33:27,120 INFO     [MainThread]   Initializing
+2020-01-15 18:33:27,120 INFO     [MainThread]   ============
+2020-01-15 18:33:27,120 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:33:27,120 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:33:27,120 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:33:27,120 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:33:27,120 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:33:27,120 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:33:27,120 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:33:27,120 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:33:27,120 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:33:27,120 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:33:27,120 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:33:27,120 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:33:29,835 INFO     [127.0.0.1-RqZSxQ]   Response: 200 (11ms)
+2020-01-15 18:33:29,835 INFO     [127.0.0.1-RqZSxQ]   Response: 200 (11ms)
+2020-01-15 18:33:37,839 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:33:37,839 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:33:37,839 INFO     [127.0.0.1-...]   Session created: lbuZ9NXvH7BrP+2t0l/AqPSp
+2020-01-15 18:33:37,839 INFO     [127.0.0.1-...]   Session created: lbuZ9NXvH7BrP+2t0l/AqPSp
+2020-01-15 18:33:37,844 INFO     [127.0.0.1-lbuZ9N]   Response: 200 (5ms)
+2020-01-15 18:33:37,844 INFO     [127.0.0.1-lbuZ9N]   Response: 200 (5ms)
+2020-01-15 18:34:32,287 INFO     [MainThread]   ============
+2020-01-15 18:34:32,287 INFO     [MainThread]   Initializing
+2020-01-15 18:34:32,287 INFO     [MainThread]   ============
+2020-01-15 18:34:32,287 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:34:32,287 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:34:32,287 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:34:32,287 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:34:32,287 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:34:32,287 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:34:32,287 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:34:32,287 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:34:32,287 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:34:32,287 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:34:32,287 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:34:32,287 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:34:39,387 INFO     [MainThread]   ============
+2020-01-15 18:34:39,387 INFO     [MainThread]   Initializing
+2020-01-15 18:34:39,387 INFO     [MainThread]   ============
+2020-01-15 18:34:39,387 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:34:39,387 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:34:39,387 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:34:39,387 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:34:39,387 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:34:39,387 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:34:39,387 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:34:39,387 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:34:39,387 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:34:39,387 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:34:39,403 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:34:39,403 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:34:42,069 INFO     [127.0.0.1-FDRGtO]   Response: 200 (11ms)
+2020-01-15 18:34:42,069 INFO     [127.0.0.1-FDRGtO]   Response: 200 (11ms)
+2020-01-15 18:35:13,475 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:35:13,475 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:35:13,475 INFO     [127.0.0.1-...]   Session created: WTeu0YAqVwE3HX5xldSVlvkW
+2020-01-15 18:35:13,475 INFO     [127.0.0.1-...]   Session created: WTeu0YAqVwE3HX5xldSVlvkW
+2020-01-15 18:35:13,478 INFO     [127.0.0.1-WTeu0Y]   Response: 200 (3ms)
+2020-01-15 18:35:13,478 INFO     [127.0.0.1-WTeu0Y]   Response: 200 (3ms)
+2020-01-15 18:42:33,058 INFO     [MainThread]   ============
+2020-01-15 18:42:33,058 INFO     [MainThread]   Initializing
+2020-01-15 18:42:33,058 INFO     [MainThread]   ============
+2020-01-15 18:42:33,058 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:42:33,058 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:42:33,058 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:42:33,058 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:42:33,058 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:42:33,074 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:42:33,074 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:42:33,074 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:42:33,074 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:42:33,074 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:42:33,074 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:42:33,074 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:42:35,796 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:42:35,796 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:42:35,802 INFO     [127.0.0.1-...]   Session created: IZ1U8Ng3IFqL16sshym7FqhR
+2020-01-15 18:42:35,802 INFO     [127.0.0.1-...]   Session created: IZ1U8Ng3IFqL16sshym7FqhR
+2020-01-15 18:42:35,803 INFO     [127.0.0.1-IZ1U8N]   Response: 200 (7ms)
+2020-01-15 18:42:35,803 INFO     [127.0.0.1-IZ1U8N]   Response: 200 (7ms)
+2020-01-15 18:49:29,938 INFO     [MainThread]   ============
+2020-01-15 18:49:29,938 INFO     [MainThread]   Initializing
+2020-01-15 18:49:29,938 INFO     [MainThread]   ============
+2020-01-15 18:49:29,938 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:49:29,938 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:49:29,938 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:49:29,938 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:49:29,938 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:49:29,938 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:49:29,938 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:49:29,938 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:49:29,938 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:49:29,938 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:49:29,938 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:49:29,938 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:49:35,392 INFO     [MainThread]   ============
+2020-01-15 18:49:35,392 INFO     [MainThread]   Initializing
+2020-01-15 18:49:35,392 INFO     [MainThread]   ============
+2020-01-15 18:49:35,392 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:49:35,392 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:49:35,392 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:49:35,392 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:49:35,392 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:49:35,392 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:49:35,392 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:49:35,392 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:49:35,392 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:49:35,392 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:49:35,392 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:49:35,392 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:49:38,040 INFO     [127.0.0.1-XMsLVG]   Response: 200 (9ms)
+2020-01-15 18:49:38,040 INFO     [127.0.0.1-XMsLVG]   Response: 200 (9ms)
+2020-01-15 18:49:50,855 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:49:50,855 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:49:50,855 INFO     [127.0.0.1-...]   Session created: ay9S/L8R7dq2ByO1nBWTT2Uy
+2020-01-15 18:49:50,855 INFO     [127.0.0.1-...]   Session created: ay9S/L8R7dq2ByO1nBWTT2Uy
+2020-01-15 18:49:50,862 INFO     [127.0.0.1-ay9S/L]   Response: 200 (6ms)
+2020-01-15 18:49:50,862 INFO     [127.0.0.1-ay9S/L]   Response: 200 (6ms)
+2020-01-15 18:52:10,669 INFO     [MainThread]   ============
+2020-01-15 18:52:10,669 INFO     [MainThread]   Initializing
+2020-01-15 18:52:10,669 INFO     [MainThread]   ============
+2020-01-15 18:52:10,669 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:52:10,669 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:52:10,669 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:52:10,669 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:52:10,669 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:52:10,669 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:52:10,669 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:52:10,669 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:52:10,669 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:52:10,669 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:52:10,669 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:52:10,669 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:52:13,355 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:52:13,355 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:52:13,355 INFO     [127.0.0.1-...]   Session created: F6AVhIemT+jZPUbGX0QRmRsB
+2020-01-15 18:52:13,355 INFO     [127.0.0.1-...]   Session created: F6AVhIemT+jZPUbGX0QRmRsB
+2020-01-15 18:52:13,361 INFO     [127.0.0.1-F6AVhI]   Response: 200 (5ms)
+2020-01-15 18:52:13,361 INFO     [127.0.0.1-F6AVhI]   Response: 200 (5ms)
+2020-01-15 18:52:20,692 INFO     [MainThread]   ============
+2020-01-15 18:52:20,692 INFO     [MainThread]   Initializing
+2020-01-15 18:52:20,692 INFO     [MainThread]   ============
+2020-01-15 18:52:20,692 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:52:20,692 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:52:20,692 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:52:20,692 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:52:20,692 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:52:20,692 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:52:20,692 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:52:20,692 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:52:20,692 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:52:20,692 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:52:20,692 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:52:20,692 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:52:31,363 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:52:31,363 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:52:31,363 INFO     [127.0.0.1-...]   Session created: La+oo4m+QHeCwEqiv4rDk6TN
+2020-01-15 18:52:31,363 INFO     [127.0.0.1-...]   Session created: La+oo4m+QHeCwEqiv4rDk6TN
+2020-01-15 18:53:23,524 INFO     [MainThread]   ============
+2020-01-15 18:53:23,524 INFO     [MainThread]   Initializing
+2020-01-15 18:53:23,524 INFO     [MainThread]   ============
+2020-01-15 18:53:23,524 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:53:23,524 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:53:23,524 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:53:23,524 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:53:23,524 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:53:23,524 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:53:23,524 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:53:23,524 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:53:23,524 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:53:23,524 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:53:23,524 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:53:23,524 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:53:26,205 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:53:26,205 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:53:26,205 INFO     [127.0.0.1-...]   Session created: jHC6A8QBY22oTy/0UBRHQs8Z
+2020-01-15 18:53:26,205 INFO     [127.0.0.1-...]   Session created: jHC6A8QBY22oTy/0UBRHQs8Z
+2020-01-15 18:53:42,290 INFO     [MainThread]   ============
+2020-01-15 18:53:42,290 INFO     [MainThread]   Initializing
+2020-01-15 18:53:42,290 INFO     [MainThread]   ============
+2020-01-15 18:53:42,290 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 18:53:42,290 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 18:53:42,290 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:53:42,290 INFO     [MainThread]   catchall                       = True
+2020-01-15 18:53:42,290 INFO     [MainThread]   autojson                       = True
+2020-01-15 18:53:42,290 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 18:53:42,290 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 18:53:42,290 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 18:53:42,290 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 18:53:42,290 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 18:53:42,290 INFO     [MainThread]   ------------------------------------------
+2020-01-15 18:53:42,290 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 18:53:44,925 INFO     [127.0.0.1-XeTWGv]   Response: 200 (0ms)
+2020-01-15 18:53:44,925 INFO     [127.0.0.1-XeTWGv]   Response: 200 (0ms)
+2020-01-15 18:54:03,507 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:54:03,507 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 18:54:03,507 INFO     [127.0.0.1-...]   Session created: zs71k1w4WN5UsDXSpvc2ixHO
+2020-01-15 18:54:03,507 INFO     [127.0.0.1-...]   Session created: zs71k1w4WN5UsDXSpvc2ixHO
+2020-01-15 18:54:03,513 INFO     [127.0.0.1-zs71k1]   Response: 200 (6ms)
+2020-01-15 18:54:03,513 INFO     [127.0.0.1-zs71k1]   Response: 200 (6ms)
+2020-01-15 19:02:03,964 INFO     [MainThread]   ============
+2020-01-15 19:02:03,964 INFO     [MainThread]   Initializing
+2020-01-15 19:02:03,964 INFO     [MainThread]   ============
+2020-01-15 19:02:03,964 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2020-01-15 19:02:03,964 INFO     [MainThread]   bottle version: 0.12.17
+2020-01-15 19:02:03,964 INFO     [MainThread]   ------------------------------------------
+2020-01-15 19:02:03,964 INFO     [MainThread]   catchall                       = True
+2020-01-15 19:02:03,964 INFO     [MainThread]   autojson                       = True
+2020-01-15 19:02:03,964 INFO     [MainThread]   canister.debug                 = False
+2020-01-15 19:02:03,964 INFO     [MainThread]   canister.log_path              = ./logs/
+2020-01-15 19:02:03,964 INFO     [MainThread]   canister.log_level             = INFO
+2020-01-15 19:02:03,964 INFO     [MainThread]   canister.log_days              = 30
+2020-01-15 19:02:03,964 INFO     [MainThread]   canister.session_timeout       = 3600
+2020-01-15 19:02:03,964 INFO     [MainThread]   ------------------------------------------
+2020-01-15 19:02:03,964 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2020-01-15 19:02:06,687 INFO     [127.0.0.1-gwq6Ad]   Response: 200 (5ms)
+2020-01-15 19:02:06,687 INFO     [127.0.0.1-gwq6Ad]   Response: 200 (5ms)
+2020-01-15 19:02:12,773 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 19:02:12,773 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2020-01-15 19:02:12,773 INFO     [127.0.0.1-...]   Session created: zOLjlNp6rsL6h4vRVcAaubMk
+2020-01-15 19:02:12,773 INFO     [127.0.0.1-...]   Session created: zOLjlNp6rsL6h4vRVcAaubMk
+2020-01-15 19:02:12,779 INFO     [127.0.0.1-zOLjlN]   Response: 200 (6ms)
+2020-01-15 19:02:12,779 INFO     [127.0.0.1-zOLjlN]   Response: 200 (6ms)

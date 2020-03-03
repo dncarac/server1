@@ -1,0 +1,24 @@
+2019-11-28 12:47:34,780 INFO     [MainThread]   ============
+2019-11-28 12:47:34,796 INFO     [MainThread]   Initializing
+2019-11-28 12:47:34,796 INFO     [MainThread]   ============
+2019-11-28 12:47:34,796 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-28 12:47:34,796 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-28 12:47:34,799 INFO     [MainThread]   ------------------------------------------
+2019-11-28 12:47:34,799 INFO     [MainThread]   catchall                       = True
+2019-11-28 12:47:34,799 INFO     [MainThread]   autojson                       = True
+2019-11-28 12:47:34,800 INFO     [MainThread]   canister.debug                 = False
+2019-11-28 12:47:34,800 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-28 12:47:34,800 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-28 12:47:34,800 INFO     [MainThread]   canister.log_days              = 30
+2019-11-28 12:47:34,801 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-28 12:47:34,801 INFO     [MainThread]   ------------------------------------------
+2019-11-28 12:47:34,801 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-28 12:47:39,677 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-28 12:47:39,684 INFO     [127.0.0.1-...]   Session created: lSx8mB2cjY/5kSfVsDLrEqjT
+2019-11-28 12:47:39,687 INFO     [127.0.0.1-lSx8mB]   Response: 200 (9ms)
+2019-11-28 15:07:27,748 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-28 15:07:27,754 INFO     [127.0.0.1-...]   Session created: gI7OW3h70aQOv52jKICG34zC
+2019-11-28 15:07:27,756 INFO     [127.0.0.1-gI7OW3]   Response: 200 (8ms)
+2019-11-28 15:08:18,528 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-28 15:08:18,528 INFO     [127.0.0.1-...]   Session created: dY4u6rB86aegsUSMSBirL/I1
+2019-11-28 15:08:18,537 INFO     [127.0.0.1-dY4u6r]   Response: 200 (8ms)

@@ -1,0 +1,280 @@
+2019-11-25 14:19:29,646 INFO     [MainThread]   ============
+2019-11-25 14:19:29,646 INFO     [MainThread]   Initializing
+2019-11-25 14:19:29,646 INFO     [MainThread]   ============
+2019-11-25 14:19:29,646 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 14:19:29,646 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 14:19:29,646 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:19:29,646 INFO     [MainThread]   catchall                       = True
+2019-11-25 14:19:29,646 INFO     [MainThread]   autojson                       = True
+2019-11-25 14:19:29,646 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 14:19:29,661 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 14:19:29,661 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 14:19:29,661 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 14:19:29,661 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 14:19:29,661 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:19:29,661 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 14:19:52,856 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:19:52,859 INFO     [127.0.0.1-...]   Session created: hHjjCP8LTj3fj/iI+pyGHa9y
+2019-11-25 14:19:55,002 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:19:55,002 INFO     [127.0.0.1-...]   Session created: l6YS9MFTk8IWCBM+ULYpzCg8
+2019-11-25 14:19:57,043 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:19:57,043 INFO     [127.0.0.1-...]   Session created: vcJJUt95v+FQzYKqHE2WQtaW
+2019-11-25 14:19:59,124 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:19:59,124 INFO     [127.0.0.1-...]   Session created: yQhW1ti7uF0J6LPLi5JYHT4X
+2019-11-25 14:20:01,199 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:01,199 INFO     [127.0.0.1-...]   Session created: H/dNSJaSWxq/fKxLxN3hYJqN
+2019-11-25 14:20:03,256 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:03,256 INFO     [127.0.0.1-...]   Session created: cLf74uxYg6NRFF6Eq6ogzOV7
+2019-11-25 14:20:45,610 INFO     [MainThread]   ============
+2019-11-25 14:20:45,610 INFO     [MainThread]   Initializing
+2019-11-25 14:20:45,610 INFO     [MainThread]   ============
+2019-11-25 14:20:45,610 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 14:20:45,610 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 14:20:45,610 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:20:45,610 INFO     [MainThread]   catchall                       = True
+2019-11-25 14:20:45,610 INFO     [MainThread]   autojson                       = True
+2019-11-25 14:20:45,610 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 14:20:45,610 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 14:20:45,610 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 14:20:45,610 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 14:20:45,610 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 14:20:45,610 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:20:45,610 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 14:20:50,926 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:50,926 INFO     [127.0.0.1-...]   Session created: lZHZwIiJ5jsWqG0kb19zHo6/
+2019-11-25 14:20:53,076 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:53,076 INFO     [127.0.0.1-...]   Session created: D5spF0ntkl2Jn6Y61YyOg7j2
+2019-11-25 14:20:55,150 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:55,150 INFO     [127.0.0.1-...]   Session created: /Ex4zgHQe5CV73mmIEXsjHDF
+2019-11-25 14:20:57,228 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:57,228 INFO     [127.0.0.1-...]   Session created: FfwA621czzOM6h4ukXH0UG1I
+2019-11-25 14:20:59,304 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:20:59,304 INFO     [127.0.0.1-...]   Session created: 73o0n8FvpKCHcmUfAM5jsaNT
+2019-11-25 14:21:01,362 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:21:01,362 INFO     [127.0.0.1-...]   Session created: SYNAde5JyFhGkMIhd5XTyEYp
+2019-11-25 14:23:48,364 INFO     [MainThread]   ============
+2019-11-25 14:23:48,364 INFO     [MainThread]   Initializing
+2019-11-25 14:23:48,364 INFO     [MainThread]   ============
+2019-11-25 14:23:48,380 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 14:23:48,380 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 14:23:48,380 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:23:48,380 INFO     [MainThread]   catchall                       = True
+2019-11-25 14:23:48,380 INFO     [MainThread]   autojson                       = True
+2019-11-25 14:23:48,380 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 14:23:48,380 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 14:23:48,380 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 14:23:48,380 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 14:23:48,380 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 14:23:48,380 INFO     [MainThread]   ------------------------------------------
+2019-11-25 14:23:48,380 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 14:23:53,758 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:23:53,758 INFO     [127.0.0.1-...]   Session created: mrJ6lr5zyffA3n6kZppBFrRB
+2019-11-25 14:23:53,766 INFO     [127.0.0.1-mrJ6lr]   Response: 200 (7ms)
+2019-11-25 14:23:55,886 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:23:55,886 INFO     [127.0.0.1-...]   Session created: RHTOTLxXf8rv10qGNrFQd/U6
+2019-11-25 14:23:55,893 INFO     [127.0.0.1-RHTOTL]   Response: 200 (6ms)
+2019-11-25 14:23:57,977 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:23:57,977 INFO     [127.0.0.1-...]   Session created: hM/5e4X35nmbb+Fts8SElAKJ
+2019-11-25 14:23:57,982 INFO     [127.0.0.1-hM/5e4]   Response: 200 (5ms)
+2019-11-25 14:24:00,046 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:24:00,046 INFO     [127.0.0.1-...]   Session created: Z7mbKkh/Vd31KW9kkdNXUeee
+2019-11-25 14:24:00,049 INFO     [127.0.0.1-Z7mbKk]   Response: 200 (3ms)
+2019-11-25 14:24:02,125 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:24:02,125 INFO     [127.0.0.1-...]   Session created: ggrHJHjtrlO1WLngS7K3C3yK
+2019-11-25 14:24:02,131 INFO     [127.0.0.1-ggrHJH]   Response: 200 (5ms)
+2019-11-25 14:24:04,191 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 14:24:04,191 INFO     [127.0.0.1-...]   Session created: tYWLDkBn5pvVpiLljJM2hgVW
+2019-11-25 14:24:04,198 INFO     [127.0.0.1-tYWLDk]   Response: 200 (6ms)
+2019-11-25 16:29:34,027 INFO     [MainThread]   ============
+2019-11-25 16:29:34,027 INFO     [MainThread]   Initializing
+2019-11-25 16:29:34,027 INFO     [MainThread]   ============
+2019-11-25 16:29:34,027 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 16:29:34,027 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 16:29:34,027 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:29:34,027 INFO     [MainThread]   catchall                       = True
+2019-11-25 16:29:34,027 INFO     [MainThread]   autojson                       = True
+2019-11-25 16:29:34,027 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 16:29:34,027 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 16:29:34,027 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 16:29:34,027 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 16:29:34,027 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 16:29:34,027 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:29:34,027 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 16:29:40,490 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:40,490 INFO     [127.0.0.1-...]   Session created: RRyFAePX6nJSqk0AX4XHAGPo
+2019-11-25 16:29:40,497 INFO     [127.0.0.1-RRyFAe]   Response: 200 (6ms)
+2019-11-25 16:29:42,621 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:42,621 INFO     [127.0.0.1-...]   Session created: KHZwKhWsU1oJM89cRagz7cZn
+2019-11-25 16:29:42,627 INFO     [127.0.0.1-KHZwKh]   Response: 200 (6ms)
+2019-11-25 16:29:44,678 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:44,678 INFO     [127.0.0.1-...]   Session created: YGQD/mkRGb4WEnXBPrwrpZbu
+2019-11-25 16:29:44,684 INFO     [127.0.0.1-YGQD/m]   Response: 200 (6ms)
+2019-11-25 16:29:46,752 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:46,752 INFO     [127.0.0.1-...]   Session created: 9L1jgbguTbV4s0kFatcGYRJS
+2019-11-25 16:29:46,758 INFO     [127.0.0.1-9L1jgb]   Response: 200 (5ms)
+2019-11-25 16:29:48,814 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:48,814 INFO     [127.0.0.1-...]   Session created: oI5xOWz8flCLDnZdJIKo4L4U
+2019-11-25 16:29:48,820 INFO     [127.0.0.1-oI5xOW]   Response: 200 (6ms)
+2019-11-25 16:29:50,890 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:29:50,890 INFO     [127.0.0.1-...]   Session created: 8S2Au91lFDD5tIovMHIw8DUI
+2019-11-25 16:29:50,895 INFO     [127.0.0.1-8S2Au9]   Response: 200 (5ms)
+2019-11-25 16:41:54,296 INFO     [MainThread]   ============
+2019-11-25 16:41:54,296 INFO     [MainThread]   Initializing
+2019-11-25 16:41:54,296 INFO     [MainThread]   ============
+2019-11-25 16:41:54,296 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 16:41:54,296 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 16:41:54,296 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:41:54,296 INFO     [MainThread]   catchall                       = True
+2019-11-25 16:41:54,296 INFO     [MainThread]   autojson                       = True
+2019-11-25 16:41:54,296 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 16:41:54,296 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 16:41:54,296 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 16:41:54,296 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 16:41:54,296 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 16:41:54,296 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:41:54,296 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 16:42:00,179 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:00,179 INFO     [127.0.0.1-...]   Session created: 2NGjNY1fxU7ojT2f9Ra/HKhs
+2019-11-25 16:42:00,185 INFO     [127.0.0.1-2NGjNY]   Response: 200 (6ms)
+2019-11-25 16:42:02,320 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:02,320 INFO     [127.0.0.1-...]   Session created: GSo312S1oJNN9IjEBg+FiA6f
+2019-11-25 16:42:02,326 INFO     [127.0.0.1-GSo312]   Response: 200 (5ms)
+2019-11-25 16:42:04,391 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:04,391 INFO     [127.0.0.1-...]   Session created: cVlrtiRpZP4D2Jxxh/ZUS0xz
+2019-11-25 16:42:04,398 INFO     [127.0.0.1-cVlrti]   Response: 200 (6ms)
+2019-11-25 16:42:06,469 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:06,469 INFO     [127.0.0.1-...]   Session created: FRwWzzf7duKA5MphV30i+/K0
+2019-11-25 16:42:06,473 INFO     [127.0.0.1-FRwWzz]   Response: 200 (4ms)
+2019-11-25 16:42:08,526 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:08,526 INFO     [127.0.0.1-...]   Session created: e/WSVjzOgfp6I2yCQrB409uR
+2019-11-25 16:42:08,532 INFO     [127.0.0.1-e/WSVj]   Response: 200 (5ms)
+2019-11-25 16:42:10,586 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:42:10,586 INFO     [127.0.0.1-...]   Session created: loBd30qRC1AytZmCw3ffBImY
+2019-11-25 16:42:10,592 INFO     [127.0.0.1-loBd30]   Response: 200 (5ms)
+2019-11-25 16:47:26,793 INFO     [MainThread]   ============
+2019-11-25 16:47:26,793 INFO     [MainThread]   Initializing
+2019-11-25 16:47:26,793 INFO     [MainThread]   ============
+2019-11-25 16:47:26,793 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 16:47:26,793 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 16:47:26,793 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:47:26,793 INFO     [MainThread]   catchall                       = True
+2019-11-25 16:47:26,793 INFO     [MainThread]   autojson                       = True
+2019-11-25 16:47:26,793 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 16:47:26,793 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 16:47:26,793 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 16:47:26,793 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 16:47:26,793 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 16:47:26,793 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:47:26,793 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 16:47:32,168 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:32,168 INFO     [127.0.0.1-...]   Session created: SDGq/jQsmGGvONtT69u1EZMe
+2019-11-25 16:47:32,174 INFO     [127.0.0.1-SDGq/j]   Response: 200 (6ms)
+2019-11-25 16:47:34,235 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:34,235 INFO     [127.0.0.1-...]   Session created: YtdYcYhOFQzEdTOozaqEldXl
+2019-11-25 16:47:36,374 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:36,374 INFO     [127.0.0.1-...]   Session created: gVUeCbZaetZ8jhk6Tw45A5Yx
+2019-11-25 16:47:36,379 INFO     [127.0.0.1-gVUeCb]   Response: 200 (5ms)
+2019-11-25 16:47:38,419 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:38,419 INFO     [127.0.0.1-...]   Session created: DO5qIYiJW+VFGM5MIEeqRh7b
+2019-11-25 16:47:40,479 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:40,479 INFO     [127.0.0.1-...]   Session created: 9lXEWL7mrmy+K5BuMmXXi5UR
+2019-11-25 16:47:40,481 INFO     [127.0.0.1-9lXEWL]   Response: 200 (2ms)
+2019-11-25 16:47:42,523 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:47:42,523 INFO     [127.0.0.1-...]   Session created: ff9XoD9Ci9abXWS9AB9MHUZR
+2019-11-25 16:47:42,525 INFO     [127.0.0.1-ff9XoD]   Response: 200 (1ms)
+2019-11-25 16:59:27,512 INFO     [MainThread]   ============
+2019-11-25 16:59:27,512 INFO     [MainThread]   Initializing
+2019-11-25 16:59:27,512 INFO     [MainThread]   ============
+2019-11-25 16:59:27,512 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 16:59:27,512 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 16:59:27,512 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:59:27,512 INFO     [MainThread]   catchall                       = True
+2019-11-25 16:59:27,512 INFO     [MainThread]   autojson                       = True
+2019-11-25 16:59:27,512 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 16:59:27,512 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 16:59:27,527 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 16:59:27,527 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 16:59:27,527 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 16:59:27,527 INFO     [MainThread]   ------------------------------------------
+2019-11-25 16:59:27,527 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 16:59:32,918 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:32,918 INFO     [127.0.0.1-...]   Session created: tlCbUoo71OuaeC+jdyDToPDT
+2019-11-25 16:59:32,925 INFO     [127.0.0.1-tlCbUo]   Response: 200 (6ms)
+2019-11-25 16:59:34,969 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:34,969 INFO     [127.0.0.1-...]   Session created: PAsVGTXaK4tmuvrLzNqCLclB
+2019-11-25 16:59:34,975 INFO     [127.0.0.1-PAsVGT]   Response: 200 (5ms)
+2019-11-25 16:59:37,030 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:37,030 INFO     [127.0.0.1-...]   Session created: a7Wa1WbmcqNhyfUH0SDjCxBt
+2019-11-25 16:59:37,036 INFO     [127.0.0.1-a7Wa1W]   Response: 200 (5ms)
+2019-11-25 16:59:39,078 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:39,078 INFO     [127.0.0.1-...]   Session created: 6+zGFcn9sXQDQ6RNSuZSh1b0
+2019-11-25 16:59:39,085 INFO     [127.0.0.1-6+zGFc]   Response: 200 (6ms)
+2019-11-25 16:59:41,147 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:41,147 INFO     [127.0.0.1-...]   Session created: Scem9FHab9bjc+KBuZFwKFg9
+2019-11-25 16:59:41,153 INFO     [127.0.0.1-Scem9F]   Response: 200 (5ms)
+2019-11-25 16:59:43,280 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 16:59:43,280 INFO     [127.0.0.1-...]   Session created: PhB6bucECXZ3aFNjmaHMl+84
+2019-11-25 16:59:43,285 INFO     [127.0.0.1-PhB6bu]   Response: 200 (5ms)
+2019-11-25 17:04:50,155 INFO     [MainThread]   ============
+2019-11-25 17:04:50,155 INFO     [MainThread]   Initializing
+2019-11-25 17:04:50,155 INFO     [MainThread]   ============
+2019-11-25 17:04:50,155 INFO     [MainThread]   python version: 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]
+2019-11-25 17:04:50,155 INFO     [MainThread]   bottle version: 0.12.17
+2019-11-25 17:04:50,155 INFO     [MainThread]   ------------------------------------------
+2019-11-25 17:04:50,155 INFO     [MainThread]   catchall                       = True
+2019-11-25 17:04:50,155 INFO     [MainThread]   autojson                       = True
+2019-11-25 17:04:50,155 INFO     [MainThread]   canister.debug                 = False
+2019-11-25 17:04:50,155 INFO     [MainThread]   canister.log_path              = ./logs/
+2019-11-25 17:04:50,155 INFO     [MainThread]   canister.log_level             = INFO
+2019-11-25 17:04:50,155 INFO     [MainThread]   canister.log_days              = 30
+2019-11-25 17:04:50,155 INFO     [MainThread]   canister.session_timeout       = 3600
+2019-11-25 17:04:50,155 INFO     [MainThread]   ------------------------------------------
+2019-11-25 17:04:50,155 INFO     [MainThread]   Session timeout is 3600 seconds. Checking for expired sessions every 60 seconds. 
+2019-11-25 17:04:54,876 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:04:54,876 INFO     [127.0.0.1-...]   Session created: HlIWI6Oz7aGUm1Qv/vEHbjqk
+2019-11-25 17:04:54,883 INFO     [127.0.0.1-HlIWI6]   Response: 200 (7ms)
+2019-11-25 17:04:56,940 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:04:56,940 INFO     [127.0.0.1-...]   Session created: idFoUna7nglH2lN+j33rVkyG
+2019-11-25 17:04:56,947 INFO     [127.0.0.1-idFoUn]   Response: 200 (6ms)
+2019-11-25 17:04:59,002 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:04:59,002 INFO     [127.0.0.1-...]   Session created: JSiWgPWacxKnvx2dRwp2fr0c
+2019-11-25 17:04:59,007 INFO     [127.0.0.1-JSiWgP]   Response: 200 (5ms)
+2019-11-25 17:05:01,032 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:05:01,032 INFO     [127.0.0.1-...]   Session created: oXYnM3RVkpPtUP8hZX00K+0k
+2019-11-25 17:05:01,037 INFO     [127.0.0.1-oXYnM3]   Response: 200 (5ms)
+2019-11-25 17:05:03,077 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:05:03,077 INFO     [127.0.0.1-...]   Session created: dEAuM/HYtiAWYtYkdMWCK007
+2019-11-25 17:05:03,083 INFO     [127.0.0.1-dEAuM/]   Response: 200 (5ms)
+2019-11-25 17:05:05,115 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:05:05,115 INFO     [127.0.0.1-...]   Session created: ukHHBmdgdpjoKdnZMp9hquUt
+2019-11-25 17:05:05,121 INFO     [127.0.0.1-ukHHBm]   Response: 200 (5ms)
+2019-11-25 17:18:01,213 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:01,218 INFO     [127.0.0.1-...]   Session created: lk5wLndqV3co6LZYEKwyQ4WP
+2019-11-25 17:18:01,219 INFO     [127.0.0.1-lk5wLn]   Response: 200 (6ms)
+2019-11-25 17:18:03,240 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:03,240 INFO     [127.0.0.1-...]   Session created: xmbMw8kklgoWqp3nIN+/mXzn
+2019-11-25 17:18:03,246 INFO     [127.0.0.1-xmbMw8]   Response: 200 (5ms)
+2019-11-25 17:18:05,302 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:05,302 INFO     [127.0.0.1-...]   Session created: CU9pueLtBqRHbLvDVnLvuNT3
+2019-11-25 17:18:05,310 INFO     [127.0.0.1-CU9pue]   Response: 200 (7ms)
+2019-11-25 17:18:07,369 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:07,369 INFO     [127.0.0.1-...]   Session created: 2ZCZo8XUDWIzipbLH/dp+d4r
+2019-11-25 17:18:07,375 INFO     [127.0.0.1-2ZCZo8]   Response: 200 (5ms)
+2019-11-25 17:18:09,418 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:09,418 INFO     [127.0.0.1-...]   Session created: Tap749V2ejBheDZ+Z+qXG7Zl
+2019-11-25 17:18:09,424 INFO     [127.0.0.1-Tap749]   Response: 200 (6ms)
+2019-11-25 17:18:11,457 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:18:11,457 INFO     [127.0.0.1-...]   Session created: emO3L/IbeJhXbTsyN/iZBO15
+2019-11-25 17:18:11,462 INFO     [127.0.0.1-emO3L/]   Response: 200 (5ms)
+2019-11-25 17:50:19,237 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:50:19,243 INFO     [127.0.0.1-...]   Session created: J+N/Bf5u0+xjXcy8lcSrWH+B
+2019-11-25 17:50:19,245 INFO     [127.0.0.1-J+N/Bf]   Response: 200 (7ms)
+2019-11-25 17:52:40,619 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 17:52:40,619 INFO     [127.0.0.1-...]   Session created: hWGe4jWdsFbCzeHj+tiFLxhO
+2019-11-25 17:52:40,626 INFO     [127.0.0.1-hWGe4j]   Response: 200 (7ms)
+2019-11-25 18:08:39,842 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 18:08:39,847 INFO     [127.0.0.1-...]   Session created: qaTeXNOe9UI/94X7JRb0GH6W
+2019-11-25 18:08:39,848 INFO     [127.0.0.1-qaTeXN]   Response: 200 (5ms)
+2019-11-25 18:10:13,477 INFO     [127.0.0.1-...]   POST http://localhost:8080/
+2019-11-25 18:10:13,477 INFO     [127.0.0.1-...]   Session created: RY6oCETI2Dw23i/xGhXqPFub
+2019-11-25 18:10:13,484 INFO     [127.0.0.1-RY6oCE]   Response: 200 (6ms)
