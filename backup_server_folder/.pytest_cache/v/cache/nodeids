@@ -1,0 +1,13 @@
+[
+  "TrialServer.py::test_url_only",
+  "TrialServer.py::test_url_hdrs",
+  "TrialServer.py::test_url_TL_hdrs",
+  "TrialServer.py::test_url_TL_valid_hdrs",
+  "TrialServer.py::test_url_TL_valid_hdrs_file",
+  "TrialServer.py::test_url_TL_valid_hdrs_and_file",
+  "Server.py::test_url_only",
+  "Server.py::test_url_hdrs",
+  "Server.py::test_url_TL_hdrs",
+  "Server.py::test_url_TL_valid_hdrs",
+  "Server.py::test_url_TL_valid_hdrs_and_file"
+]

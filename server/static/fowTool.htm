@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body vlink="#FFCC33" text="#FFFFFF" link="#FF0000" bgcolor="#000000" background="fowbg.jpg" alink="#0000FF">
+<p align="center"><br />
+<font face="Script" size="7"><strong>Fond Of Writing  -  The Tool</strong></font></p>
+<center><img alt="" src="fow.gif" /></center><font face="Arial" size="3">
+<h2>
+Intended mode of operation</h2>
+<p>
+The first step is for the mistress to define the task: a task consists
+of a text, which has to be typed in repeatedly, and the number of
+repetitions or the time during which the slave has to type in the
+text. A couple of additional options can be chosen, which make life
+more difficult for the slave (see below under <a href="#options">options</a>).</p>
+<p>
+The tool consists of a number of dialogs. In the initial dialog shown above the
+slave enters the text to be typed, and any options chosen by his
+mistress. Alternative the mistress can pack a task into a task file
+with the help of the FOW TaskEditor - the slave then simply loads this
+task definition file by pressing the &quot;Load Task&quot; button and selecting
+the task file. The description of the TaskEditor is a <a href="fowEditor.htm">separate document</a>.</p>
+<p>
+The slave then presses the start button. A text entry dialog will
+appear; the slave must set the focus to the text entry field with the
+help of the mouse, type in the text, submit the text to the tool again
+by pressing &quot;Submit&quot; with the mouse, set the input focus back to the text
+entry field, type in text, and so on.</p>
+<p>
+When the requested number of repetitions of the text have been entered,
+or when the specified time span has elapsed, the text entry dialog will
+close and the slave can generate a report. The text entry box can be
+closed prematurely by pressing &quot;Cancel&quot; - the report will give still the
+information about the number of repetitions achieved and the time spend
+while typing in the text.</p>
+<p>
+If mistress and slave are at the same location, everything ends here:
+the report can't be edited in the report generator dialog, and the
+mistress can inspect the result of the slaves work in this dialog.</p>
+<p>
+If mistress and slave are living apart from another, the report has
+to be emailed by the slave. With the help of the button it can be copied
+to the clipboard, and from there it can be copied into an email (usually
+Ctrl-V or Menu Edit/Paste within the mail program) which is send to the
+mistress.</p>
+<p>
+Once copied into the mail, the report can be freely edited. In order
+to avoid any tampering with contents of the report by the slave, the
+report contains a digital signature. If any part of the report is
+modified, report and signature will not match. </p>
+<p>
+The tool allows to verify the integrity of a report and its signature
+with the help of the verify dialog. The mistress marks the report
+received within a mail, copies this part to the clipboard (usually
+Ctrl-C or menu Edit/Copy), opens the verification dialog and pastes
+the report with the help of the paste button into the verification form.
+The tool will then recompute the signature of the report and decide
+whether this is identical to the one contained in the report.</p>
+<p><u>Note 1)</u> Because some email programs reformat long lines, only printable
+characters are relevant for the signature... additional (or missing)
+line splits, blanks, tab chars etc. do not invalidate a report.</p>
+<p><u>Note 2)</u> The report starts with the line &lt;Start of report&gt; and ends with
+the line &lt;End of report&gt;. At least these two lines and all lines in between
+must be copied into the verification dialog; it is admissible to copy more,
+the whole email for instance, and to give it to the verification dialog.</p>
+<p><u>Note 3)</u> The signature also verifies the integrity of the program itself.
+If a report/signature mismatch is detected, this can be a consequence
+of different versions of the program used by the slave and his mistress.
+The second line of the report contains the version number of the tool
+which generated the report; the version number of the tool which checks
+the signature is displayed in the title bar of the tool itself. A signature
+cannot be recognized if these version numbers are not identical.</p>
+<p><a id="options" name="options"></a></p>
+<h2><a id="options" name="options">
+Options</a></h2><a id="options" name="options">
+<p>
+The text to be typed in has to be entered in the first line. If no text
+has been entered, pressing the Start button will only lead to a message
+beep.</p>
+<table border="0" cellpadding="0" cellspacing="3">
+<tbody>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">run for a fixed number of repetitions :</font></td>
+<td align="left"><font face="Arial">nnn times</font></td></tr>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">run for a fixed time span :</font></td>
+<td align="left"><font face="Arial">mmm minutes</font></td></tr>  </tbody></table>
+<p>
+These are in fact convenience options for the slave: when the given limit
+is reached, the tool informs the slave that he now can generate the report
+(isn't this a nice tool ?! ;-). The numbers do not have to be set, the slave
+can decide without the help of the tool how long to type, and press Cancel
+in the text entry dialog once he wants to generate a report. If both numbers
+are given, both conditions have to be fulfilled in order that the tool will
+stop.</p>
+<table border="0" cellpadding="0" cellspacing="3">
+<tbody>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">[ ] hide text by replacing typed chars with *</font></td></tr></tbody></table>
+<p>
+Any characters entered by the slave will be displayed as an asterisk. This
+makes the task to enter a correct line more difficult. This option only
+works for a single-line text, multi-line texts will always be readable.</p>
+<table border="0" cellpadding="0" cellspacing="3">
+<tbody>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">[ ] the text has to be entered backwards</font></td></tr></tbody></table>
+<p>
+If this checkbox is marked, the text (e.g) &quot;i am your obedient slave&quot; would
+have to be entered as &quot;evals tneidebo ruoy ma i&quot;.</p>
+<p>
+Distracting Dialogs:<br />
+The tool can randomly pop up a little dialog box, which has to be closed
+before typing can go on. This box has a <u>very</u> small button, which has to
+be hit with the mouse in order that the dialog box closes. The frequency
+with which this box is displayed depends on the chosen setting:</p>
+<table border="0" cellpadding="0" cellspacing="3">
+<tbody>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">occasionally:</font></td>
+<td align="left"><font face="Arial">on the average every 45 seconds</font></td>
+<td align="left"><font face="Arial">(randomly between 36 and 54 secs)</font>    </td></tr>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">often:</font></td>
+<td align="left"><font face="Arial">on the average every 15 seconds</font></td>
+<td align="left"><font face="Arial">(randomly between 12 and 18 secs)</font></td></tr>
+<tr>
+<td align="left">
+    &nbsp;</td>
+<td align="left"><font face="Arial">very often:</font></td>
+<td align="left"><font face="Arial">on the average every 5 seconds</font></td>
+<td align="left"><font face="Arial">(randomly between 4 and 6 secs)</font></td></tr></tbody></table>
+<p>
+A little word of warning: certain combinations of the above options (a long
+text, hidden text, reverse text and frequent distraction dialogs) make it <u>very</u>
+hard to enter the text correctly even once. Responsible mistresses therefore
+often try the task themselves before giving them to their slaves... for a minute,
+for example, or for three repetitions...</p>
+<h2>
+Reports</h2>
+<p>
+A report has the following form:</p>
+<pre><font "="" face="Courier New">&lt;Start of report&gt;
+FondOfWriting Version 1.0
+
+Text :
+i am your obedient slave
+---End of text---
+Hide text : no
+Reverse Text : no
+Distractions : often
+
+Start time: 1999/11/24  21:29:24
+Duration : 1 minute(s) 5 second(s)
+Typed lines : 6
+Faulty lines : 1
+Longest breaks between two lines :
+15 second(s)
+13 second(s)
+12 second(s)
+
+&lt;Signature&gt;
+BA36179B3A053E768D03870E13E07FAD
+&lt;End of report&gt;</font></pre>
+<p>
+Most of the information contained within should be self explanatory. The tool
+measures the time it takes the slave to enter a line, and displays the three
+longest times it encountered - this will help to decide whether the slave took
+an unallowed break while performing the task.</p></a></font><a id="options" name="options"></a>
+</body>
+</html>
