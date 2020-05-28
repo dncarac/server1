@@ -116,9 +116,9 @@ def ReceiveFile():
         _LOG.debug("      Missing taskdata")
         _LOG.trace("      Leave ReceiveFile returning header Ack: False")
         return bt.HTTPError(404, "Not Found - File content is not a valid task file.")
-    session.data[cfg.TASKDATA_KEY] = td
+    session.data[cfg.TSESSION_TASKDATA_KEY = td
     bt.response.set_header('Ack', 'True')
-    _LOG.info("session.data['Task-Data']:\n%s" % session.data[cfg.TASKDATA_KEY])
+    _LOG.info("session.data['Task-Data']:\n%s" % session.data[cfg.TSESSION_TASKDATA_KEY)
     _LOG.debug("    End received files --")
 #------------------------------------------------------------------------------
     _LOG.trace("Leave ReceiveFile returning response header Ack: True")
@@ -188,7 +188,7 @@ def Cancel():
 # endregion ===================================================================
 
 
-test_select = {
+tsvr_func_select= {
     "SendFile": ReceiveFile,
     "SendClientConfig": SendClientConfig,
     "SendTypingData": SendTypingData,
