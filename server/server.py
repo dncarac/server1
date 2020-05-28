@@ -8,35 +8,23 @@
 data, returns data to client in response.
 
 __CreatedOn__ = "2019-11-05"
-__UpdatedOn__ = "2020-03-02"
+__UpdatedOn__ = "2020-05-26"
 
 @author: Den
 @copyright: Copyright © 2019-2020 Den
 @license: ALL RIGHTS RESERVED
 '''
 
-''' Error Handling
-Suggested error handling in Bottle documentation --
-https://bottlepy.org/docs/dev/api.html#bottle.Bottle.error
-
-def error_handler_500(error):
-    return 'error_handler_500'
-
-app.error(code=500, callback=error_handler_500)
-
-@app.error(404)
-def error_handler_404(error):
-    return 'error_handler_404'
-'''
-
+# region - Imports
 import bottle as bt; bt_app = bt.Bottle()    # @UnresolvedImport
 from waitress import serve    # @UnresolvedImport
 import canister    # @UnresolvedImport
 from canister import session    # @UnresolvedImport
 import cfg
 import TaskData as TD
-from dataclasses import *
-# import sys
+from dataclasses import *    # @UnusedWildImport
+import sys
+# endregion
 
 bt_app.config.load_config('./conf/canister.cfg')
 bt_app.install(canister.Canister())
@@ -44,166 +32,203 @@ bt_app.install(canister.Canister())
 # region - logging setup
 import logging
 logging.basicConfig()
+# logging.disable(logging.WARN)
 _LOG = logging.getLogger(__name__)
 # _LOG.level = logging.INFO
 # _LOG.level = logging.DEBUG
 _LOG.level = logging.TRACE
 
 
-# logging.disable(logging.WARN)
 # Disable logging at or below this level (WARN default)
-def trace_only(record):
-    return record.levelno == logging.TRACE
+def trace_only(record): return record.levelno == logging.TRACE
 
 # _LOG.addFilter(trace_only)
 
-
-# region - Module constants
-#   upload
-FILE_KEY = 'upfile'
-TASKDATA_KEY = "Task-Data"
-
-#   download
-DEFAULT_PAGE = "Default page"
 # endregion
+#
 
 
-# region - ERROR HANDLERS =====================================================
-@bt_app.error(400)    # Bad request
-def error_handler_400(error_code):
-    return "Error 400\n %s" % error_code
-
-
-@bt_app.error(404)    # Not found
-def error_handler_404(error_code):
-    return "Error 404\n %s" % error_code
-
-
-@bt_app.error(405)    # Not found
-def error_handler_405(error_code):
-    return "Error 405\n %s" % error_code
-
-
-@bt_app.error(500)    # Server error
-def error_handler_500(error_code):
-    return "Error 500\n %s" % error_code
-
-
-@bt_app.error(501)    # Not implemented
-def error_handler_501(error_code):
-    return "Error 501\n %s" % error_code
-
-# endregion ===================================================================
-
-
-# region - Server functions ===================================================
 def ReceiveFile():
-    ''' ReceiveFile --
+    ''' Server.ReceiveFile --
     @summary:
         Receive task file from client
         Create TaskData instance from file
         Store TaskData instance in session data
 
-    @precondition: request.files data contains - {'TaskData': {"upfile": <bytes>}, ...}
+    @precondition: request.files data contains - {'Task-File': <bytes>, 'Msg-Type': "ReceiveFile"}
 
-    @postcondition: response header which contains - {"Ack" : "Ack" | "Nack", ...}
+    @postcondition: response status code which contains - 200 / Ack; or
+                    response status code which contains - 404 | 406 / Nack.
 
-    @return: True if no errors; None if error occurred.
-    @rtype: bool | None
+    @return: status code 200 / Ack; or
+             status code 404 | 406 / Nack.
+        @rtype: status code / str
     '''
-
-    _LOG.trace("Enter ReceiveFile")
+    _LOG.trace("Enter Server.ReceiveFile")
 #------------------------------------------------------------------------------
     # Check if file exists in upload
     try:
-        tskfil = bt.request.files[FILE_KEY].file.read()
+        tskfil = bt.request.files[cfg.TASKFILE_KEY].file.read()
     except bt.BottleException as e:
-        _LOG.exception("No task file found in request.\n  %s" % e)
-        _LOG.trace("Leave ReceiveFile returning HTTP response code 404.")
+        bt.response.status = cfg.NOT_FOUND_ERROR
         bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
-        return bt.HTTPError(404, "Not Found - Unable to retrieve the task file from client request.\n%s" % e)
+        _LOG.exception("No task file found in request.\n  %s" % e)
+        _LOG.error(cfg.NOT_FOUND_ERROR_T, "No task file found in request.")
+        _LOG.trace("Leave ReceiveFile returning Nack / HTTP status code", cfg.NOT_FOUND_ERROR_T)
+        return
     _LOG.debug("tskfil: %s" % tskfil)
 
-    # Check if file represents a valid task file which produces valid task data
-    tf = TD.TaskFile()
-    _LOG.debug("tf:\n%s\n%s" % (type(tf), tf))
-    td = tf.read(tskfil)
-    _LOG.debug("td:\n%s\n%s" % (type(td), td))
-    if tf is None or td is None:
-        _LOG.debug("Unable to create TaskData from uploaded taskfile")
+    # Check if tskfil represents a valid task file
+    td = TD.TaskFile().read(tskfil)
+    if td is None:
+        bt.response.status = cfg.INVALID_DATA
         bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
-        _LOG.trace("Leave ReceiveFile returning HTTP response code 406")
-        return bt.HTTPError(406, "Not Acceptable - Unable to create TaskData from uploaded taskfile")
-    _LOG.debug("taskdata:\n%s" % td)
+        _LOG.error(cfg.INVALID_DATA_T, "Unable to create TaskData from uploaded taskfile")
+        _LOG.trace("Leave ReceiveFile returning Nack / HTTP status code.", cfg.INVALID_DATA)
+        return
+    _LOG.debug("td:\n%s" % td)
 
     # Assign task data to session data and return Ack
-    session.data[TASKDATA_KEY] = td
-    _LOG.info("session data:\n%s\n%s" % (type(session.data[TASKDATA_KEY]), session.data[TASKDATA_KEY]))
+    session.data[cfg.SESSION_TASKDATA_KEY] = td
+    bt.response.status = cfg.SUCCESS
     bt.response.set_header(cfg.RTN_KEY, cfg.ACK)
-    _LOG.info("returned response header: %s" % bt.response.headers[cfg.RTN_KEY])
+    _LOG.info("Session data:\n%s" % session.data[cfg.SESSION_TASKDATA_KEY])
+    _LOG.info("Returned status: %s" % bt.response.status)
+    _LOG.info("Return %s" % cfg.ACK)
 #------------------------------------------------------------------------------
-    _LOG.trace("Leave ReceiveFile")
-    return "200 Success - Task file received successfully"
+    _LOG.trace("Leave Server.ReceiveFile returning %s / HTTP response code %s." % (cfg.ACK, cfg.SUCCESS))
+    return
 
 
 def SendClientConfig():
-#     ''' SendClientConfig --
-#
-#     '''
+    ''' SendClientConfig --
+    '''
     _LOG.trace("Enter Server.SendClientConfig")
 #------------------------------------------------------------------------------
-    _LOG.debug("SendClientConfig session data:\n%s" % session.data)
-    ccd = TD.TaskData(session.data).get_client_config_data()
+    td = session.data.get(cfg.SESSION_TASKDATA_KEY, None)
+    if td is None:
+        bt.response.status = cfg.NOT_FOUND_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.NOT_FOUND_ERROR_T, "Session data unavailable for Server.SendClientConfig.")
+        _LOG.trace("Leave Server.SendClientConfig returning Nack / HTTP status code", cfg.NOT_FOUND_ERROR)
+        return
+    _LOG.debug("td:\n%s" % td)
+
+    ccd = td.get_client_config_data()
+    if ccd is None:
+        bt.response.status = cfg.NOT_FOUND_ERROR
+        _LOG.error(cfg.NOT_FOUND_ERROR_T, "Client config data not retrieved for Server.SendClientConfig.")
+        _LOG.trace("Leave Server.SendClientConfig returning Nack / HTTP status code.", cfg.NOT_FOUND_ERROR)
+        return
     _LOG.debug("ccd: %s" % ccd)
+
     bt.response.set_header(cfg.RTN_KEY, ccd)
-    _LOG.info("returned response header: %s" % bt.response.headers[cfg.RTN_KEY])
+    bt.response.status = cfg.SUCCESS
+    _LOG.info("Returned status: %s" % bt.response.status)
+    _LOG.info("Returned response header: %s" % bt.response.headers[cfg.RTN_KEY])
 #------------------------------------------------------------------------------
-    _LOG.trace("Leave Server.SendClientConfig")
-    return "200 Success - Client configuration returned successfully"
+    _LOG.trace("Leave Server.SendClientConfig returning: %s\n%s" % (bt.response.status, bt.response.headers[cfg.RTN_KEY]))
+    return
 
 
 def SendTypingData():
-#     ''' SendTypingData --
-#
-#     '''
+    ''' SendTypingData --
+    '''
+    _LOG.trace("Enter Server.SendTypingData")
+#------------------------------------------------------------------------------
+    td = session.data.get(cfg.SESSION_TASKDATA_KEY, None)
+    if td is None:
+        bt.response.status = cfg.NOT_FOUND_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.NOT_FOUND_ERROR_T, "Session data not retrieved correctly in Server.SendTypingData.")
+        _LOG.trace("Leave Server.SendTypingData returning Nack / %s" % cfg.NOT_FOUND_ERROR)
+        return
+    _LOG.debug("td: %s" % td)
 
-    _LOG.trace("  Enter Server.SendTypingData")
-#------------------------------------------------------------------------------
-    td = session.data[TASKDATA_KEY]
-    _LOG.debug("Session data:\n%s" % td)
-    typed_line = bt.request.forms.get(cfg.TYPINGDATA_KEY, None)
+    typed_line = bt.request.forms.get(cfg.TYPEDLINE_KEY, None)
+    if typed_line is None:
+        bt.response.status = cfg.CLIENT_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.CLIENT_ERROR_T, "Typed line not retrieved correctly from form upload.")
+        _LOG.trace("Leave Server.SendTypingData returning Nack / %s" % cfg.CLIENT_ERROR)
+        return
     _LOG.debug("typed_line: %s" % typed_line)
-#     td = TD.TaskData(session.data)
-    _LOG.debug("td:\n%s" % td)
-    typing_data = td.next_typing_data(typed_line)
-    _LOG.debug("typing data: ", typing_data)
-    _LOG.debug("typing data: %s" % typing_data)
-    bt.response.set_header(cfg.RTN_KEY, typing_data)
-    _LOG.info("returned response header: %s" % bt.response.headers[cfg.RTN_KEY])
+
+    typing_data = td.next_typing_data(typed_line)    # Dictionary of values, or END_TASK or Error (None)
+    if typing_data is None:
+        bt.response.status = cfg.SERVER_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.SERVER_ERROR_T, "Typing data was not extracted correctly.")
+        _LOG.trace("Leave Server.SendTypingData returning Nact / %s" % cfg.SERVER_ERROR)
+        return
+    _LOG.debug("typing_data: %s" % typing_data)
+
+    try:
+        bt.response.set_header(cfg.RTN_KEY, typing_data)
+    except bt.BottleException as e:
+        bt.response.status = cfg.SERVER_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.exception(cfg.SERVER_ERROR_T, "Unable to return typing_data to the client correctly./n  ", e)
+        _LOG.trace("Leave Server.SendTypingData returning Nack / %s" % cfg.SERVER_ERROR)
+        return None
+    rtn = bt.response.headers[cfg.RTN_KEY]
+    bt.response.status = cfg.SUCCESS
+    bt.response.set_header(cfg.RTN_KEY, cfg.ACK)
+    _LOG.info("Returned status code: %s" % bt.response.status)
+    _LOG.info("Returned response header: %s" % rtn)
 #------------------------------------------------------------------------------
-    _LOG.trace("  Leave Server.SendTypingData")
-    return "200 Success - Typing data returned successfully"
+    _LOG.trace("Leave Server.SendTypingData returning Ack / %s" % cfg.SUCCESS)
+    return
 
 
 def SendDistractionData():
-#     ''' SendDistractionData --
-#
-#     '''
-    _LOG.trace("  Enter Server.SendDistractionData")
-# #------------------------------------------------------------------------------
-#     bt.response.set_header(cfg.TL_HDR + 'Distraction-Data', (5.5, 'Title1', 'Msg1'))
-# #------------------------------------------------------------------------------
-    _LOG.trace("  Leave Server.SendDistractionData")
+    ''' SendDistractionData --
+    '''
+    _LOG.trace("Enter Server.SendDistractionData")
+#------------------------------------------------------------------------------
+    td = session.data.get(cfg.SESSION_TASKDATA_KEY, None)
+    if td is None:
+        bt.response.status = cfg.NOT_FOUND_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.NOT_FOUND_ERROR_T, "Session data not retrieved correctly in Server.SendDistractionData.")
+        _LOG.trace("Leave Server.SendDistractionData returning Nack / %s" % cfg.NOT_FOUND_ERROR)
+        return
+    _LOG.debug("td: %s" % td)
+
+    distraction_data = td.next_distraction_data()    # Dictionary of values, or Error (None)
+    if distraction_data is None:
+        bt.response.status = cfg.SERVER_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.error(cfg.SERVER_ERROR_T, "Distraction data was not extracted correctly.")
+        _LOG.trace("Leave Server.SendDistractionData returning Nack / %s" % cfg.SERVER_ERROR)
+        return
+    _LOG.debug("distraction_data: %s" % distraction_data)
+
+    try:
+        bt.response.set_header(cfg.RTN_KEY, distraction_data)
+    except bt.BottleException as e:
+        bt.response.status = cfg.SERVER_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.exception(cfg.SERVER_ERROR_T, "Unable to return distraction_data to the client correctly./n  ", e)
+        _LOG.trace("Leave Server.SendDistractionData returning Nack / %s" % cfg.SERVER_ERROR)
+        return None
+    rtn = bt.response.headers[cfg.RTN_KEY]
+    bt.response.status = cfg.SUCCESS
+    bt.response.set_header(cfg.RTN_KEY, cfg.ACK)
+    _LOG.info("Returned status code: %s" % bt.response.status)
+    _LOG.info("Returned response header: %s" % rtn)
+#------------------------------------------------------------------------------
+    _LOG.trace("Leave Server.SendTypingData returning Ack / %s" % cfg.SUCCESS)
+    return
 
 
 def SendSummary():
-#     ''' SendSummary --
-#
-#     '''
+    ''' SendSummary --
+    '''
     _LOG.trace("  Enter Server.SendSummary")
-# #------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
-# #------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
     _LOG.trace("  Leave Server.SendSummary")
 
 
@@ -217,10 +242,10 @@ def Cancel():
 # #------------------------------------------------------------------------------
     _LOG.trace("  Leave Server.Cancel")
 
-# endregion ===================================================================
+# region - Dispatcher =============================================================================
 
 
-test_select = {
+svr_func_select = {
     "SendFile": ReceiveFile,
     "GetClientConfig": SendClientConfig,
     "GetTypingData": SendTypingData,
@@ -228,6 +253,7 @@ test_select = {
     "GetSummary": SendSummary,
     "Cancel": Cancel,
     }
+# endregion =======================================================================================
 
 
 @bt_app.get("/")
@@ -235,108 +261,54 @@ def server_get():
     '''
     Get request
     '''
-    return DEFAULT_PAGE
+    return cfg.DEFAULT_PAGE
 
 
 @bt_app.post("/")
 def server_post():
-    ''' server_post --
+    ''' Server.server_post --
     @summary: Receives post requests to path "/", extracts forms data, returns requested data (if
-    any)
+    any).
 
-    @cvar bt.request.forms: (dict) Contains http request data
+    @precondition: bt.request.forms (dict) contains data representing the html request from the
+    client.
 
-    @cvar bt.response.headers: (dict) Contains http response data
-
-    @precondition: bt.request.forms (dict) contains data representing the html request from the client.
-
-    @postcondition: bt.response.headers contains data to be returned to the client
+    @postcondition: bt.response.headers contains data to be returned to the client (if any).
     '''
+
+    sys.stderr.write("\n\n")
     _LOG.trace("Enter Server.server_post")
 #------------------------------------------------------------------------------
-    # Check if Msg-Type exists
-    msg_type = bt.request.forms.get(cfg.MSG_TYPE_KEY, None)
+    # Check if Msg-Type header exists
+    msg_type = bt.request.forms.get(cfg.MSG_TYPE_KEY)
     _LOG.debug("msg_type: %s" % msg_type)
+
+    # Check if Msg-Type exists
     if msg_type is None:
-        _LOG.debug("400 - Bad Request - The request did not include a 'Msg-Type' header.")
-        return bt.HTTPError(400, "Bad Request - The request did not include a 'Msg-Type' header.")
+        bt.response.status = cfg.CLIENT_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.debug("%s - Bad Request - The request did not include a 'Msg-Type' header." % cfg.CLIENT_ERROR)
+        _LOG.trace("Leave Server.server_post returning status code: %s %s" % (cfg.CLIENT_ERROR, cfg.NACK))
+        return
 
     # Check if Msg-Type header points to an existing function
-    test_func = test_select.get(msg_type, None)
-    _LOG.debug("test_func: %s" % test_func)
-    if test_func is None:
-        _LOG.debug("501 - Not Implemented - The requested function is not implemented.")
-        return bt.HTTPError(501, "Not Implemented - The requested function is not implemented.")
-    _LOG.debug("test_func name: %s()" % test_func.__name__)
+    svr_func = svr_func_select.get(msg_type, None)
+    _LOG.debug("svr_func: %s" % svr_func)
+
+    if svr_func is None:
+        bt.response.status = cfg.NOT_IMPLEMENTED_ERROR
+        bt.response.set_header(cfg.RTN_KEY, cfg.NACK)
+        _LOG.debug("%s - Not Implemented - The requested function is not implemented." % cfg.NOT_IMPLEMENTED_ERROR)
+        _LOG.trace("Leave Server.server_post returning %s" % cfg.NOT_IMPLEMENTED_ERROR)
+        return
+    _LOG.debug("svr_func name: %s()" % svr_func.__name__)
 
     # Execute function
-    rtn = test_func()
+    svr_func()
 #------------------------------------------------------------------------------
-    _LOG.trace("Leave Server.server_post returning %s" % rtn)
-    return rtn
+    sys.stderr.write("\n\n")
+    return
 
 
 if __name__ == '__main__':
     serve(bt_app)
-
-# Quick Tests --
-#     import requests as rq
-#     from threading import Thread
-#     url = cfg.SERVER
-#
-#     print("\nStart")
-#
-#     # Start server ============================================================
-#     def start_server():
-#         _LOG.trace("Start backup_server_folder")
-#         serve(bt_app)
-#         _LOG.trace("Server closed")
-#
-#     server_thread = Thread(None, start_server)
-#     server_thread.start()
-#
-#     # region - GET ============================================================
-#     sys.stderr.write("\n")
-#     _LOG.info("get(url)")
-#     r = rq.get(url)
-#     assert str(r) == "<Response [200]>"
-#     assert r.status_code == 200
-#     assert r.text == "Server_get page"
-#     # endregion ===============================================================
-#
-#     # region - POST, SendFile, FOWtaskfile ====================================
-#     sys.stderr.write("\n")
-#     _LOG.info("post(url, SendFile, FOWtaskfile)")
-#     files = {FILE_KEY: open(cfg.TASK_PATH + "breast task 5.tsk", 'rb')}
-#     data = {cfg.MSG_TYPE_KEY: "SendFile"}
-#     r = rq.post(url, data=data, files=files)
-#     assert str(r) == "<Response [200]>"
-#     assert r.status_code == 200
-#     assert r.text == "Server_post return"
-#     assert r.headers[cfg.ACK] == cfg.ACK
-#     # endregion ===============================================================
-#
-#     #region -  POST, SendFile, TLtaskfile =====================================
-#     sys.stderr.write("\n")
-#     _LOG.info("post(url, SendFile, TLtaskfile)")
-#     files = {FILE_KEY: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb')}
-#     data = {cfg.MSG_TYPE_KEY: "SendFile"}
-#     r = rq.post(url, data=data, files=files)
-#     assert str(r) == "<Response [200]>"
-#     assert r.status_code == 200
-#     assert r.text == "Server_post return"
-#     assert r.headers[cfg.ACK] == cfg.ACK
-#     # endregion ===============================================================
-#
-#     #region -  POST, GetClientConfig ==========================================
-#     sys.stderr.write("\n")
-#     _LOG.info("post(url, GetClientConfig)")
-#     data = {cfg.MSG_TYPE_KEY: "GetClientConfig"}
-#     r = rq.post(url, data=data)
-#     assert str(r) == "<Response [200]>"
-#     assert r.status_code == 200
-#     assert r.text == "Server_post return"
-#     assert r.headers[cfg.CLIENT_CONFIG_KEY] == {'hidden' : 'False'}
-#     # endregion ===============================================================
-#
-#     print("\nDone")

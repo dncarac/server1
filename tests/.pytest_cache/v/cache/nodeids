@@ -22,5 +22,12 @@
   "test_server.py::test_SendFile_function_TL",
   "test_server.py::test_ClientConfig_function",
   "test_server.py::test__function",
-  "test_server.py::test_TypingData_function"
+  "test_server.py::test_TypingData_function",
+  "test_server.py::test_DistractionData_function",
+  "test_server.py::test_no_file_sent",
+  "test_server.py::test_no_file_sent_so_no_session_data",
+  "test_server.py::test_ClientConfig_no_file_sent_so_no_session_data",
+  "test_server.py::test_no_client_config_data",
+  "test_server.py::test_ClientConfig_no_session_data",
+  "test_server.py::test_ClientConfig_no_client_config_data"
 ]
