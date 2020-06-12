@@ -7,7 +7,7 @@ First test module
 Testing module for setting up Client-backup_server_folder communications
 
 __CreatedOn__="2018-04-02"
-__UpdatedOn__="2020-05-27"
+__UpdatedOn__="2020-05-29"
 
 @author: Den
 @copyright: Copyright © 2018-2020 Den
@@ -164,13 +164,18 @@ def test_ClientConfig_no_session_data():
 def test_ClientConfig_no_client_config_data():
     ''' test_ClientConfig_no_client_config_data --
     '''
+    import TaskData as TD
 
     sys.stderr.write("\n\n")
     _LOG.trace("Enter test_ClientConfig_no_client_config_data")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
     #-- Receive file------------------------------------------------------------------------------------------------
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "no_config_data.tlt", 'rb').read()}
+        fn = cfg.TASK_PATH + "no_config_data.tlt"
+        print("fn: %s" % fn)
+        files = {cfg.TASKFILE_KEY: open(fn, 'rb').read()}
+        td = TD.TaskFile.read(cfg.TASK_PATH + 'no_config_data.tlt')
+        print(td)
         data = {cfg.MSG_TYPE_KEY: "SendFile"}
 
         r = s.post(url, data=data, files=files)
@@ -311,19 +316,20 @@ def test_TypingData_function():
 
 
 if __name__ == "__main__":
-    import TaskData as TD
-    td = TD.TaskData()
-    print(td)
-    td.config_data = None
-    print(td)
-    tf = TD.TaskFile()
-    print(tf)
-    res = tf.write(td, cfg.TASK_PATH + "no_config_data.tlt")
-    print("res: %s\n" % res)
-    print(tf)
-    td = TD.TaskFile().read(cfg.TASK_PATH + "no_config_data.tlt")
-    print(td)
-    exit()
+# Setup to try to test for no client_config_data
+#     import TaskData as TD
+#     td = TD.TaskData()
+#     print(td)
+#     td.config_data = None
+#     print(td)
+#     tf = TD.TaskFile()
+#     print(tf)
+#     res = tf.write(td, cfg.TASK_PATH + "no_config_data.tlt")
+#     print("res: %s\n" % res)
+#     print(tf)
+#     td = TD.TaskFile().read(cfg.TASK_PATH + "no_config_data.tlt")
+#     print(td)
+#     exit()
 
     ''' (from pytest docs):
     Running pytest can result in six different exit codes:
