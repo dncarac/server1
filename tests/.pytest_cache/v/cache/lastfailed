@@ -1,6 +1,4 @@
 {
-  "test_server.py::test_ClientConfig_no_client_config_data": true,
-  "test_server.py::test_DistractionData_function": true,
   "test_server.py::test_function_existence[Cancel]": true,
   "test_server.py::test_function_existence[GetClientConfig]": true,
   "test_server.py::test_function_existence[GetDistractionData]": true,
