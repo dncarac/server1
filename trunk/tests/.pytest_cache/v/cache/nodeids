@@ -29,5 +29,7 @@
   "test_server.py::test_ClientConfig_no_file_sent_so_no_session_data",
   "test_server.py::test_no_client_config_data",
   "test_server.py::test_ClientConfig_no_session_data",
-  "test_server.py::test_ClientConfig_no_client_config_data"
+  "test_server.py::test_ClientConfig_no_client_config_data",
+  "test_server.py::test_FOW_get",
+  "test_server.py::test_terminate_session_function"
 ]
