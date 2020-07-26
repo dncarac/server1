@@ -7,7 +7,7 @@ First test module
 Testing module for setting up Client-backup_server_folder communications
 
 __CreatedOn__="2018-04-02"
-__UpdatedOn__="2020-06-30"
+__UpdatedOn__="2020-07-08"
 
 @author: Den
 @copyright: Copyright © 2018-2020 Den
@@ -17,9 +17,9 @@ import requests as rq    # @UnresolvedImport
 import cfg
 import pytest
 # import sys
-# from TLexceptions import *
+# from TTLexceptionsimport *
 
-# region - logging setup
+# region - logging setup-
 import logging
 # def trace_only(record):
 #     return record.levelno == logging.TRACE
@@ -48,8 +48,9 @@ def test_header_no_msg_type():
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_header_no_msg_type")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_msg_type_bad_function():
     ''' test_msg_type_bad_function --
     '''
@@ -67,8 +68,9 @@ def test_msg_type_bad_function():
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_msg_type_bad_function")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_SendFile_function_FOW():
     ''' test_SendFile_function_FOW --
     '''
@@ -88,8 +90,9 @@ def test_SendFile_function_FOW():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_SendFile_function_FOW")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_SendFile_function_TL():
     ''' test_SendFile_function --
     '''
@@ -109,8 +112,9 @@ def test_SendFile_function_TL():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_SendFile_function_TL")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_ClientConfig_no_session_data():
     ''' test_ClientConfig_no_session_data --
     '''
@@ -129,19 +133,20 @@ def test_ClientConfig_no_session_data():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_session_data\n\n")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_ClientConfig_no_client_config_data():
     ''' test_ClientConfig_no_client_config_data --
     '''
     _LOG.trace("Enter test_ClientConfig_no_client_config_data")
 #--------------------------------------------------------------------------------------------------
-    import TaskData as TD
+#     import TaskData as TD
     with rq.Session() as s:
     #-- Receive file------------------------------------------------------------------------------------------------
         fn = cfg.TASK_PATH + "no_config_data.tlt"
         files = {cfg.TASKFILE_KEY: open(fn, 'rb').read()}
-        td = TD.TaskFile().read(cfg.TASK_PATH + 'no_config_data.tlt')
+#         td = TD.TaskFile().read(cfg.TASK_PATH + 'no_config_data.tlt')
         data = {cfg.MSG_TYPE_KEY: "SendFile"}
 
         r = s.post(cfg.SERVER, data=data, files=files)
@@ -164,8 +169,9 @@ def test_ClientConfig_no_client_config_data():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_client_config_data\n\n")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_ClientConfig_function():
     ''' Server.test_ClientConfig_function --
     '''
@@ -197,8 +203,9 @@ def test_ClientConfig_function():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave Server.test_ClientConfig_function\n\n")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_TypingData_function():
     ''' test_TypingData_functionv
     '''
@@ -242,12 +249,13 @@ def test_TypingData_function():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_TypingData_function\n\n")
 
-
 # @pytest.mark.skip("Successfully completed")
+
+
 def test_DistractionData_function():
     ''' test_DistractionData_function
     '''
-    import sys
+#     import sys
     _LOG.trace("Enter test_DistractionData_function")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
@@ -278,8 +286,19 @@ def test_DistractionData_function():
     _LOG.trace("Leave test_DistractionData_function")
 
 
+def test_Time_function():
+    _LOG.trace("Enter test_Time_function")
+    #-------------------------------------------------------------------------------
+    import time
+    rtn = time.time()
+    _LOG.debug("Server time.time(): %s" % rtn)
+    assert type(rtn) == float
+    #-------------------------------------------------------------------------------
+    _LOG.trace("Leave test_Time_function returning\n %s" % rtn)
+
+
 @pytest.mark.skip("To be developed")
-def test_terminate_session_function():
+def test_Terminate_session_function():
     ''' test_DistractionData_function
     '''
     _LOG.trace("Enter test_DistractionData_function")
@@ -305,6 +324,23 @@ def test_terminate_session_function():
 
 
 if __name__ == "__main__":
+#     print("Start\n")
+#     s = rq.Session()
+#     print(s)
+#     with rq.Session() as s:
+#         print(s)
+#         for a in dir(s):
+#             print(a)
+#         for k, v in s.__dict__.items():
+#             print("%s -> %s" % (k, v))
+#
+#         print(s)
+#         print(s.headers)
+#         print(s.data)
+#
+#     exit()
+#     print("\nEnd")
+
 # Setup to try to test for no client_config_data
 #     import TaskData as TD
 #     td = TD.TaskData()
@@ -373,4 +409,3 @@ if __name__ == "__main__":
 
     rtn = pytest.main(["-vvs", __file__])    # @UndefinedVariable
     print("Pytest returned:\n  %s - %s" % (rtn, exit_code[rtn]))
-

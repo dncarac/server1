@@ -8,16 +8,35 @@
 data, returns data to client in response.
 
 __CreatedOn__ = "2019-11-05"
-__UpdatedOn__ = "2020-06-30"
+__UpdatedOn__ = "2020-07-22"
 
 @author: Den
 @copyright: Copyright © 2019-2020 Den
 @license: ALL RIGHTS RESERVED
 '''
+# region - logging setup
+import logging
+logging.basicConfig()
+_LOG = logging.getLogger(__name__)
+# logging.disable(logging.WARN)
+# _LOG.level = logging.INFO
+# _LOG.level = logging.DEBUG
+# _LOG.level = logging.TRACE
+
+# Disable logging at or below this level (WARN default)
+
+
+def trace_only(record): return record.levelno == logging.TRACE
+
+# _LOG.addFilter(trace_only)
+
+# endregion
+
 # region - Module Constants
-STATIC_PATH = "./static"
-FOW_PATH = "./FOW/fow.htm"
-TL_PATH = "./TL/index.html"
+# STATIC_PATH = "./static"
+# FOW_PATH = "./FOW/fow.htm"
+# TL_PATH = "./TL/index.html"
+
 
 # region - Imports
 import bottle as bt; bt_app = bt.Bottle()    # @UnresolvedImport
@@ -26,28 +45,11 @@ import canister    # @UnresolvedImport
 from canister import session    # @UnresolvedImport
 import cfg
 import TaskData as TD
-import sys
+import time
 # endregion
 
 bt_app.config.load_config('./conf/canister.cfg')
 bt_app.install(canister.Canister())
-
-# region - logging setup
-import logging
-logging.basicConfig()
-# logging.disable(logging.WARN)
-_LOG = logging.getLogger(__name__)
-# _LOG.level = logging.INFO
-# _LOG.level = logging.DEBUG
-# _LOG.level = logging.TRACE
-
-
-# Disable logging at or below this level (WARN default)
-def trace_only(record): return record.levelno == logging.TRACE
-
-# _LOG.addFilter(trace_only)
-
-# endregion
 
 
 def ReceiveFile():
@@ -93,7 +95,7 @@ def ReceiveFile():
     _LOG.debug("Session data:\n%s" % session.data[cfg.SESSION_TASKDATA_KEY])
     bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
-    _LOG.trace("Leave Server.ReceiveFile returning HTTP sttus code %s." % cfg.SUCCESS_T)
+    _LOG.trace("Leave Server.ReceiveFile returning HTTP status code %s." % cfg.SUCCESS_T)
     return
 
 
@@ -103,22 +105,22 @@ def SendClientConfig():
     _LOG.trace("Enter Server.SendClientConfig")
 #---------------------------------------------------------------------------------------------------
     try:
-        td = session.data.get(cfg.SESSION_TASKDATA_KEY, None)
+        ccd = session.data.get(cfg.SESSION_TASKDATA_KEY, None)
     except (bt.BottleException, TypeError, ValueError) as e:
         bt.response.status = cfg.SERVER_ERROR
         _LOG.exception("Error retrieving session data in Server.SendClientConfig\n  %s" % e)
         _LOG.error("Error retrieving session data in Server.SendClientConfig")
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.SERVER_ERROR_T)
         return
-    _LOG.debug("td: %s\n%s" % (type(td), td))
+    _LOG.debug("ccd: %s\n%s" % (type(ccd), ccd))
 
-    if td is None:
+    if ccd is None:
         bt.response.status = cfg.NOT_FOUND_ERROR
         _LOG.error("No ClientConfigData in session data for Server.SendClientConfig.")
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.NOT_FOUND_ERROR_T)
         return
 
-    ccd = td.get_client_config_data()
+    ccd = ccd.get_client_config_data()
     _LOG.info("ccd: %s %s" % (type(ccd), ccd))
     if ccd is None:
         bt.response.status = cfg.NOT_FOUND_ERROR
@@ -258,7 +260,7 @@ def Cancel():
     try:
         del session
     except bt.BottleException as e:
-        _LOG.exception("Error terminating a session")
+        _LOG.exception("Error terminating a session.\n  %s" % e)
 # #------------------------------------------------------------------------------
     _LOG.trace("  Leave Server.Cancel")
 
@@ -287,7 +289,6 @@ def server_post():
 
     @postcondition: bt.response.headers contains data to be returned to the client (if any).
     '''
-    sys.stderr.write("\n\n")
     _LOG.trace("Enter Server.server_post")
 #---------------------------------------------------------------------------------------------------
     # Check if Msg-Type header exists
@@ -316,5 +317,18 @@ def server_post():
     return
 
 
+@bt_app.post("/time")
+def time_post():
+    ''' Server.time_post --
+    @summary: Receives post requests to path "/time", returns time as time.time float.
+    '''
+    _LOG.trace("Enter Server.time_post")
+#---------------------------------------------------------------------------------------------------
+    rtn = time.time()
+#------------------------------------------------------------------------------
+    _LOG.trace("Leave Server.time_post returning: %s" % rtn)
+    return str(rtn)
+
+
 if __name__ == '__main__':
-    serve(bt_app)
+    serve(bt_app, port=cfg.SERVER_PORT)
