@@ -7,7 +7,7 @@ First test module
 Testing module for setting up Client-backup_server_folder communications
 
 __CreatedOn__="2018-04-02"
-__UpdatedOn__="2020-07-08"
+__UpdatedOn__="2020-08-12"
 
 @author: Den
 @copyright: Copyright © 2018-2020 Den
@@ -43,7 +43,7 @@ def test_header_no_msg_type():
 #     _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    assert r.status_code == cfg.CLIENT_ERROR
+    assert r.status_code == cfg.ERR_CLIENT_ERROR
     assert r.text == ""
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_header_no_msg_type")
@@ -56,14 +56,14 @@ def test_msg_type_bad_function():
     '''
     _LOG.trace("Enter test_msg_type_bad_function")
 #--------------------------------------------------------------------------------
-    hdrs = {cfg.MSG_TYPE_KEY: "dummy"}
+    hdrs = {cfg.REQ_MSG_TYPE: "dummy"}
 
     r = rq.post(cfg.SERVER, data=hdrs)
 
     _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    assert r.status_code == cfg.NOT_IMPLEMENTED_ERROR
+    assert r.status_code == cfg.ERR_NOT_IMPLEMENTED_ERROR
     assert r.text == ""
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_msg_type_bad_function")
@@ -77,8 +77,8 @@ def test_SendFile_function_FOW():
     _LOG.trace("Enter test_SendFile_function_FOW")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "breast task 5.tsk", 'rb').read()}
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "breast task 5.tsk", 'rb').read()}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
 
         r = s.post(cfg.SERVER, data=data, files=files)
 
@@ -99,8 +99,8 @@ def test_SendFile_function_TL():
     _LOG.trace("Enter test_SendFile_function_TL")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb').read()}
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb').read()}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
 
         r = s.post(cfg.SERVER, data=data, files=files)
 
@@ -120,20 +120,18 @@ def test_ClientConfig_no_session_data():
     '''
     _LOG.trace("Enter test_ClientConfig_no_session_data")
 #-- Get client config-------------------------------------------------------------------------------------------
-    data = {cfg.MSG_TYPE_KEY: "GetClientConfig"}
+    data = {cfg.REQ_MSG_TYPE: cfg.REQ_CLIENT_CONFIG_DATA}
 
     r = rq.post(cfg.SERVER, data=data)
 
     _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    _LOG.debug("r.headers[cfg.RTN_KEY]: %s" % r.headers.get(cfg.RTN_KEY, None))
-    assert r.status_code == cfg.NOT_FOUND_ERROR
+    _LOG.debug("r.headers[cfg.RTN_KEY]: %s" % r.headers.get(cfg.RES_RTN, None))
+    assert r.status_code == cfg.ERR_NOT_FOUND_ERROR
     assert r.text == ""
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_session_data\n\n")
-
-# @pytest.mark.skip("Successfully completed")
 
 
 def test_ClientConfig_no_client_config_data():
@@ -145,9 +143,9 @@ def test_ClientConfig_no_client_config_data():
     with rq.Session() as s:
     #-- Receive file------------------------------------------------------------------------------------------------
         fn = cfg.TASK_PATH + "no_config_data.tlt"
-        files = {cfg.TASKFILE_KEY: open(fn, 'rb').read()}
+        files = {cfg.REQ_TASKFILE: open(fn, 'rb').read()}
 #         td = TD.TaskFile().read(cfg.TASK_PATH + 'no_config_data.tlt')
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
 
         r = s.post(cfg.SERVER, data=data, files=files)
 
@@ -157,14 +155,14 @@ def test_ClientConfig_no_client_config_data():
         assert r.status_code == cfg.SUCCESS
         assert r.text == ""
     #-- Get client config-------------------------------------------------------------------------------------------
-        data = {cfg.MSG_TYPE_KEY: "GetClientConfig"}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_CLIENT_CONFIG_DATA}
 
         r = s.post(cfg.SERVER, data=data)
 
         _LOG.debug("r.status_code: %s" % r.status_code)
         _LOG.debug("r.text: %s" % r.text)
         _LOG.debug("r.headers: %s" % r.headers)
-        assert r.status_code == cfg.NOT_FOUND_ERROR
+        assert r.status_code == cfg.ERR_NOT_FOUND_ERROR
         assert r.text == ""
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_client_config_data\n\n")
@@ -179,8 +177,8 @@ def test_ClientConfig_function():
 #  -------------------------------------------------------------------------------------------------
     with rq.Session() as s:
 #------ Send file -----------------------------------------------------------------------------------------------
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb').read()}
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb').read()}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
 
         r = s.post(cfg.SERVER, data=data, files=files)
 
@@ -191,7 +189,7 @@ def test_ClientConfig_function():
         assert r.text == ""
 
 #------ Get client config-------------------------------------------------------------------------------------------
-        data = {cfg.MSG_TYPE_KEY: "GetClientConfig"}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_CLIENT_CONFIG_DATA}
 
         r = s.post(cfg.SERVER, data=data)
 
@@ -213,9 +211,9 @@ def test_TypingData_function():
 #------ Send file -----------------------------------------------------------------------------------------------
     with rq.Session() as s:
         _LOG.info("\n\nSend file")
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "test typing data task.tsk", 'rb').read()}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "test typing data task.tsk", 'rb').read()}
         _LOG.debug("files sent: %s" % files)
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
         _LOG.debug("data sent: %s" % data)
 
         r = s.post(cfg.SERVER, data=data, files=files)
@@ -233,9 +231,9 @@ def test_TypingData_function():
                          cfg.END_TASK
                         ]
         for sent, expected in zip(send_list, expected_list):
-            _LOG.debug("sent to server: %s ... expected from server: %s}'" % (sent, expected))
-            data = {cfg.MSG_TYPE_KEY: "GetTypingData",
-                    cfg.TYPEDLINE_KEY: sent}
+            _LOG.debug("sent to sserver %s ... expected from sserver %s}'" % (sent, expected))
+            data = {cfg.REQ_MSG_TYPE: cfg.REQ_TYPED_LINE,
+                    cfg.REQ_TYPED_LINE: sent}
             _LOG.debug("data: %s" % data)
 
             r = s.post(cfg.SERVER, data=data)
@@ -245,7 +243,7 @@ def test_TypingData_function():
             _LOG.debug("r.headers: %s" % r.headers)
             assert r.status_code == cfg.SUCCESS
             assert r.text == ""
-            assert r.headers[cfg.RTN_KEY] == expected
+            assert r.headers[cfg.RES_RTN] == expected
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_TypingData_function\n\n")
 
@@ -259,29 +257,25 @@ def test_DistractionData_function():
     _LOG.trace("Enter test_DistractionData_function")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
 
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
         r = s.post(cfg.SERVER, data=data, files=files)
         assert r.status_code == cfg.SUCCESS
         assert r.text == ""
 
-        data = {cfg.MSG_TYPE_KEY: "GetDistractionData",
-                cfg.TYPEDLINE_KEY: None}
-        r = s.post(cfg.SERVER, data=data)
-        assert r.status_code == 200
-        assert r.text == ""
-        assert r.headers[cfg.RTN_KEY] == "{'d_title': 'Distraction Title', 'd_msg': 'Message 1'}"
+        expected = {'d_title': 'Distraction title', 'd_msg': 'Distraction line'}
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_DISTRACTION_DATA}
 
         r = s.post(cfg.SERVER, data=data)
-        assert r.status_code == 200
-        assert r.text == ""
-        assert r.headers[cfg.RTN_KEY] == "{'d_title': 'Distraction Title', 'd_msg': 'Message 2'}"
 
-        r = s.post(cfg.SERVER, data=data)
-        assert r.status_code == 200
         assert r.text == ""
-        assert r.headers[cfg.RTN_KEY] == "{'d_title': 'Distraction Title', 'd_msg': 'Message 1'}"
+        assert r.status_code == 200
+        hdrs = eval(r.headers[cfg.RES_RTN])
+        assert 108 <= hdrs['delay'] <= 162
+        del hdrs['delay']
+        assert hdrs == expected
+
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_DistractionData_function")
 
@@ -304,14 +298,14 @@ def test_Terminate_session_function():
     _LOG.trace("Enter test_DistractionData_function")
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
-        files = {cfg.TASKFILE_KEY: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
 
-        data = {cfg.MSG_TYPE_KEY: "SendFile"}
+        data = {cfg.REQ_MSG_TYPE: "SendFile"}
         r = s.post(cfg.SERVER, data=data, files=files)
         assert r.status_code == cfg.SUCCESS
         assert r.text == ""
 
-        data = {cfg.MSG_TYPE_KEY: "Cancel"}
+        data = {cfg.REQ_MSG_TYPE: "Cancel"}
         r = s.post(cfg.SERVER, data=data)
         print("session s: %s" % s)
         print("r.status_code: %s" % r.status_code)
