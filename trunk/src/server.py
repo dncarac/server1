@@ -8,7 +8,7 @@
 data, returns data to client in response.
 
 __CreatedOn__ = "2019-11-05"
-__UpdatedOn__ = "2020-08-12"
+__UpdatedOn__ = "2020-08-19"
 
 @author: Den
 @copyright: Copyright © 2019-2020 Den
@@ -40,10 +40,14 @@ import canister    # @UnresolvedImport
 from canister import session    # @UnresolvedImport
 import cfg
 import TaskData as TD
-from Log import Log; TlLog = None    # TlLog ID is made global
+# from Log import Log    # ; TlLog = Log()    # TlLog ID is made global
 
 bt_app.config.load_config('./conf/canister.cfg')
 bt_app.install(canister.Canister())
+
+# Module variables
+_running = False
+_assigned_line = cfg.START_TASK
 
 
 def ReceiveFile():
@@ -62,6 +66,7 @@ def ReceiveFile():
              status code 404 | 406.
         @rtype: status code
     '''
+    _LOG.trace("\n\n======  ReceiveFile  ===================================")
     _LOG.trace("Enter Server.ReceiveFile")
 #------------------------------------------------------------------------------
     # Check if file exists in upload
@@ -89,9 +94,9 @@ def ReceiveFile():
     _LOG.debug("Task data in session data:\n%s" % session.data[cfg.SESSION_TASKDATA])
 
     # Start log with task data and assign to session data
-    TlLog = Log(td)    # Start TL log
-    session.data[cfg.SESSION_LOG] = TlLog
-    _LOG.debug("Log in session data:\n%s" % session.data[cfg.SESSION_LOG])
+    # TlLog.open(td)    # Open TL log
+    # session.data[cfg.SESSION_LOG] = TlLog
+    # _LOG.debug("Log in session data:\n%s" % session.data[cfg.SESSION_LOG])
 
     bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
@@ -107,7 +112,7 @@ def SendClientConfig():
 #---------------------------------------------------------------------------------------------------
     try:
         td = session.data.get(cfg.SESSION_TASKDATA, None)
-        TlLog = session.data.get(cfg.SESSION_LOG, None)
+#         TlLog = session.data.get(cfg.SESSION_LOG, None)
     except (bt.BottleException, TypeError, ValueError) as e:
         bt.response.status = cfg.ERR_SERVER_ERROR
         _LOG.exception("Error retrieving session data in Server.SendClientConfig\n  %s" % e)
@@ -115,7 +120,7 @@ def SendClientConfig():
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_SERVER_ERROR_T)
         return
     _LOG.debug("td:\n%s" % td)
-    _LOG.debug("TlLog:\n%s" % TlLog)
+#     _LOG.debug("TlLog:\n%s" % TlLog)
 
     if td is None:
         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
@@ -123,33 +128,22 @@ def SendClientConfig():
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_NOT_FOUND_ERROR_T)
         return
 
-    if TlLog is None:
-        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
-        _LOG.error("No TlLog found in session data for Server.SendClientConfig.")
-        _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_NOT_FOUND_ERROR_T)
-        return
-
-#     ccd = td.get_client_config_data()
-#  -------------------------------------------------------------------------------------------------
-#         _LOG.info("cc_data: %s" % (cc_data))
-#         if cc_data is None:
-#             Cancel("No client config data in TaskData")
-#             _LOG.trace("Leave TaskData.client_config_data returning None")
-#             return None
-#         cc_data = td.asdict(cc_data)
-#         TlLog.add(cfg.CLIENTCONFIGDATA_KEY)
-#  -------------------------------------------------------------------------------------------------
+#     if TlLog is None:
+#         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
+#         _LOG.error("No TlLog found in session data for Server.SendClientConfig.")
+#         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+#         return
 
     ccd = td.get_client_config_data()
     _LOG.info("ccd:\n  %s" % ccd)
 
     if ccd is None:
         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
-        Cancel("ClientConfigData not in session data for Server.SendClientConfig.")
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+        Cancel("ClientConfigData not in session data for Server.SendClientConfig.")
         return
 
-    TlLog.add(cfg.LOG_CLIENT_CONFIG_DATA, ccd)
+#     TlLog.add(cfg.LOG_CLIENT_CONFIG_DATA, ccd)
     bt.response.headers[cfg.RES_RTN] = ccd
     bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
@@ -160,61 +154,96 @@ def SendClientConfig():
 def SendTypingData():
     ''' SendTypingData --
     '''
+    global _running, _assigned_line
+    _LOG.trace("\n\n======  SendTypingData  ===================================")
     _LOG.trace("Enter Server.SendTypingData")
-#------------------------------------------------------------------------------
-    try:
+# region - Receive typed line from the client.---------------------------------------------------------------
+    try:    # Session data
         td = session.data.get(cfg.SESSION_TASKDATA, None)
-        TlLog = session.data.get(cfg.SESSION_LOG, None)
+#         TlLog = session.data.get(cfg.SESSION_LOG, None)
     except (bt.BottleException, TypeError, ValueError) as e:
         bt.response.status = cfg.ERR_SERVER_ERROR
         _LOG.exception("Error retrieving session data in Server.SendTypingData\n  %s" % e)
-        _LOG.error("Error retrieving session data in Server.SendTypingData")
         _LOG.trace("Leave Server.SendTypingData returning HTTP status code: %s" % cfg.ERR_SERVER_ERROR_T)
+        Cancel("Error retrieving session data in Server.SendTypingData")
         return
     _LOG.debug("session data taskdata: %s" % td)
 
     if td is None:
         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
-        _LOG.error("TaskData Session data does not exist in Server.SendTypingData.")
         _LOG.trace("Leave Server.SendTypingData returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+        Cancel("TaskData Session data does not exist in Server.SendTypingData.")
         return
 
-    if TlLog is None:
-        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
-        _LOG.error("TlLog Session data does not exist in Server.SendTypingData.")
-        _LOG.trace("Leave Server.SendTypingData returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
-        return
+#     if TlLog is None:
+#         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
+#         _LOG.trace("Leave Server.SendTypingData returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+#         Cancel("TlLog Session data does not exist in Server.SendTypingData.")
+#         return
 
-    try:
+    try:    # Typed ine
         typed_line = bt.request.forms.get(cfg.REQ_TYPED_LINE, None)
     except (bt.BottleException, ValueError, TypeError) as e:
         bt.response.status = cfg.ERR_SERVER_ERROR
         _LOG.exception("Error retrieving typed line from request.forms.\n  %s" % e)
-        _LOG.error("Error retrieving typed line from request.forms.\n  %s" % e)
         _LOG.trace("Leave SendTypingData returning %s" % cfg.ERR_SERVER_ERROR_T)
+        Cancel("Error retrieving typed line from request.forms.\n  %s" % e)
         return
     _LOG.debug("typed_line: %s" % typed_line)
 
     if typed_line is None:
         bt.response.status = cfg.ERR_CLIENT_ERROR
-        Cancel("Typed line not in request.headers in Server.SendTypingData.")
         _LOG.trace("Leave Server.SendTypingData returning %s" % cfg.ERR_CLIENT_ERROR_T)
+        Cancel("Typed line not in request.headers in Server.SendTypingData.")
         return
-    TlLog.add("TYPED_LINE", typed_line)
+#     TlLog.add("TYPED_LINE", typed_line)
+# endregion
 
-    typing_data = td.next_typing_data(typed_line)    # Dictionary of values, or END_TASK or Error (None)
-    _LOG.debug("typing_data: %s" % typing_data)
-    if typing_data is None:
+# region - Retrieve typing data from TaskData ---------------------------------------------------------------
+# TODO Correct logic for last return (END_TASK)
+    if not _running and typed_line == cfg.START_TASK:    # First time through
+        _LOG.info("First!")
+        _running = True
+        _match = True
+        t_data = td.typing_data.next()    # triple or None
+
+    elif _running and isinstance(typed_line, str):    # Middle times through - i.e. a line has been typed
+        _match = typed_line == _assigned_line.reversed if td.typing_data.reversed else _assigned_line
+
+        if td.completion_data.is_done(_match):    # Last time through
+            _LOG.info("Done!")
+            _LOG.trace("Leave TaskData.next_typing_data returning END_TASK")
+            t_data = cfg.END_TASK    # str
+        else:
+            _LOG.info("Next!")
+            t_data = td.typing_data.next()    # {'title': title, 'line': line, 'msg': msg}
+
+    else:    # Error - Neither a string nor START_TASK received from typing dialog.
+        _LOG.trace("Leave TaskData.next_typing_data returning None")
+        Cancel("Neither a string nor START_TASK received from the typing dialog.")
+        return
+# endregion
+
+# region - Process typing data (t_data)
+    _LOG.debug("t_data: %s %s" % (type(t_data), t_data))
+    # TlLog.add("TYPING_DATA", t_data)
+    if isinstance(t_data, dict):    # dict
+        _assigned_line = t_data['line']    # line
+        _LOG.info("assigned line: %s %s" % (type(_assigned_line), _assigned_line))
+        bt.response.set_header(cfg.RES_RTN, t_data)
+        bt.response.status = cfg.SUCCESS
+    elif t_data == cfg.END_TASK:    # END_TASK
+        _running = False
+        bt.response.set_header(cfg.RES_RTN, t_data)
+        bt.response.status = cfg.SUCCESS
+    else:
         bt.response.status = cfg.ERR_SERVER_ERROR
-        _LOG.error("No typing data from taskdata object.")
-        _LOG.trace("Leave Server.SendTypingData returning %s" % cfg.ERR_SERVER_ERROR_T)
+        _LOG.trace("Leave server..SendTypingData returning %s" % cfg.ERR_SERVER_ERROR_T)
+        Cancel("Typing data is None, or not a dictionary or END_TASK")
         return
-
-    bt.response.set_header(cfg.RES_RTN, typing_data)
-    TlLog.add("TYPING_DATA", typing_data)
-    bt.response.status = cfg.SUCCESS
+# endregion
 #------------------------------------------------------------------------------
-    _LOG.trace("Leave Server.SendTypingData returning: %s\n%s" % (cfg.SUCCESS_T, typing_data))
+    _LOG.trace("Leave Server.SendTypingData returning: %s\n  %s" % (cfg.SUCCESS_T, t_data))
     return
 
 
@@ -225,7 +254,7 @@ def SendDistractionData():
 #------------------------------------------------------------------------------
     try:
         td = session.data.get(cfg.SESSION_TASKDATA, None)
-        TlLog = session.data.get(cfg.SESSION_LOG, None)
+#         TlLog = session.data.get(cfg.SESSION_LOG, None)
     except bt.BottleError as e:
         bt.response.status = cfg.ERR_SERVER_ERROR
         _LOG.exception("Cannot retrieve session data in Server.SendDistractionData\n  %s:" % e)
@@ -233,7 +262,7 @@ def SendDistractionData():
         Cancel("Cannot retrieve session data in Server.SendDistractionData")
         return
     _LOG.debug("td: %s" % td)
-    _LOG.debug("TlLog: %s" % TlLog)
+#     _LOG.debug("TlLog: %s" % TlLog)
 
     if td is None:
         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
@@ -241,11 +270,11 @@ def SendDistractionData():
         Cancel("No taskdata in session data in Server.SendDistractionData.")
         return
 
-    if TlLog is None:
-        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
-        _LOG.trace("Leave Server.SendDistractionData returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
-        Cancel("TlLog not found in session data in Server.SendDistractionData.")
-        return
+#     if TlLog is None:
+#         bt.response.status = cfg.ERR_NOT_FOUND_ERROR
+#         _LOG.trace("Leave Server.SendDistractionData returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+#         Cancel("TlLog not found in session data in Server.SendDistractionData.")
+#         return
 
     distraction_data = td.next_distraction_data()    # Dictionary of values, or Error (None)
     _LOG.debug("distraction_data: %s" % distraction_data)
@@ -255,7 +284,7 @@ def SendDistractionData():
         Cancel("Distraction data not found in session data.")
         return
 
-    TlLog.add(cfg.LOG_DISTRACTION_DATA, distraction_data)
+#     TlLog.add(cfg.LOG_DISTRACTION_DATA, distraction_data)
     bt.response.set_header(cfg.RES_RTN, distraction_data)
     bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
@@ -277,15 +306,18 @@ def Cancel(msg):
 #     '''  Cancel--
 #
 #     '''
-    _LOG.trace("  Enter Server.Cancel with %s" % msg)
+    _LOG.trace("Enter Server.Cancel with %s" % msg)
 # #------------------------------------------------------------------------------
-    _LOG.info("\nCancel: %s\n------------------\n\n" % msg)
+    # TlLog.add("CANCEL", msg)
+    # _LOG.info("\nCancel: %s\n------------------\n\n" % msg)
+    print("\nCancel: %s\n------------------\n\n" % msg)
+
 #     try:
 #         del session
 #     except bt.BottleException as e:
 #         _LOG.exception("Error terminating a session.\n  %s" % e)
 # #------------------------------------------------------------------------------
-    _LOG.trace("  Leave Server.Cancel")
+    _LOG.trace("Leave Server.Cancel")
 
 
 # region - Dispatcher =============================================================================
@@ -311,7 +343,7 @@ def server_post():
 
     @postcondition: bt.response.headers contains data to be returned to the client (if any).
     '''
-    _LOG.trace("\n\n=====================================")
+    _LOG.trace("\n\n==  SERVER  ===================================")
     _LOG.trace("Enter server.server_post")
 #---------------------------------------------------------------------------------------------------
     # Check if Msg-Type header exists

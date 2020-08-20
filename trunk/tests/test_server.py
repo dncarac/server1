@@ -7,18 +7,12 @@ First test module
 Testing module for setting up Client-backup_server_folder communications
 
 __CreatedOn__="2018-04-02"
-__UpdatedOn__="2020-08-12"
+__UpdatedOn__="2020-08-19"
 
 @author: Den
 @copyright: Copyright © 2018-2020 Den
 @license: ALL RIGHTS RESERVED
 '''
-import requests as rq    # @UnresolvedImport
-import cfg
-import pytest
-# import sys
-# from TTLexceptionsimport *
-
 # region - logging setup-
 import logging
 # def trace_only(record):
@@ -31,8 +25,16 @@ _LOG = logging.getLogger(__name__)
 # _LOG.level = logging.INFO
 # endregion
 
+# region - imports
+import requests as rq    # @UnresolvedImport
+import cfg
+import pytest
+# import sys
+# from TTLexceptionsimport *
+# endregion
 
-# @pytest.mark.skip("Successfully completed")
+
+# @pytest.mark.skip("PASSED")
 def test_header_no_msg_type():
     ''' test_header_no_msg_type --
     '''
@@ -51,6 +53,7 @@ def test_header_no_msg_type():
 # @pytest.mark.skip("Successfully completed")
 
 
+# @pytest.mark.skip("PASSED")
 def test_msg_type_bad_function():
     ''' test_msg_type_bad_function --
     '''
@@ -68,9 +71,8 @@ def test_msg_type_bad_function():
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_msg_type_bad_function")
 
-# @pytest.mark.skip("Successfully completed")
 
-
+# @pytest.mark.skip("PASSED")
 def test_SendFile_function_FOW():
     ''' test_SendFile_function_FOW --
     '''
@@ -93,6 +95,7 @@ def test_SendFile_function_FOW():
 # @pytest.mark.skip("Successfully completed")
 
 
+# @pytest.mark.skip("PASSED")
 def test_SendFile_function_TL():
     ''' test_SendFile_function --
     '''
@@ -115,6 +118,7 @@ def test_SendFile_function_TL():
 # @pytest.mark.skip("Successfully completed")
 
 
+# @pytest.mark.skip("PASSED")
 def test_ClientConfig_no_session_data():
     ''' test_ClientConfig_no_session_data --
     '''
@@ -134,6 +138,7 @@ def test_ClientConfig_no_session_data():
     _LOG.trace("Leave test_ClientConfig_no_session_data\n\n")
 
 
+# @pytest.mark.skip("PASSED")
 def test_ClientConfig_no_client_config_data():
     ''' test_ClientConfig_no_client_config_data --
     '''
@@ -167,14 +172,13 @@ def test_ClientConfig_no_client_config_data():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_client_config_data\n\n")
 
-# @pytest.mark.skip("Successfully completed")
 
-
+# @pytest.mark.skip("PASSED")
 def test_ClientConfig_function():
     ''' Server.test_ClientConfig_function --
     '''
     _LOG.trace("Enter Server.test_ClientConfig_function")
-#  -------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------
     with rq.Session() as s:
 #------ Send file -----------------------------------------------------------------------------------------------
         files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "breast task 5.tlt", 'rb').read()}
@@ -201,14 +205,13 @@ def test_ClientConfig_function():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave Server.test_ClientConfig_function\n\n")
 
-# @pytest.mark.skip("Successfully completed")
 
-
+# @pytest.mark.skip("PASSED")
 def test_TypingData_function():
-    ''' test_TypingData_functionv
+    ''' test_TypingData_function
     '''
     _LOG.trace("Enter test_TypingData_function")
-#------ Send file -----------------------------------------------------------------------------------------------
+#------ Send file ----------------------------------------------------------------------------------
     with rq.Session() as s:
         _LOG.info("\n\nSend file")
         files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "test typing data task.tsk", 'rb').read()}
@@ -223,33 +226,34 @@ def test_TypingData_function():
         _LOG.debug("r.headers: %s" % r.headers)
         assert r.status_code == cfg.SUCCESS
         assert r.text == ""
+
 #------ Send lines----------------------------------------------------------------------------------
-        _LOG.info("\n\nSend lines")
+        _LOG.info("\n\nStart Send lines !!")
         send_list = [cfg.START_TASK, "Line 1", "Line 2"]
         expected_list = ["{'title': 'Typing Dialog Title', 'line': 'Line 1', 'msg': 'Msg'}",
                          "{'title': 'Typing Dialog Title', 'line': 'Line 2', 'msg': 'Msg'}",
                          cfg.END_TASK
                         ]
         for sent, expected in zip(send_list, expected_list):
-            _LOG.debug("sent to sserver %s ... expected from sserver %s}'" % (sent, expected))
+            _LOG.debug("sent to server %s ... expected from server %s}'" % (sent, expected))
             data = {cfg.REQ_MSG_TYPE: cfg.REQ_TYPED_LINE,
                     cfg.REQ_TYPED_LINE: sent}
             _LOG.debug("data: %s" % data)
 
             r = s.post(cfg.SERVER, data=data)
 
+            t_data = r.headers[cfg.RES_RTN]    # str
+            _LOG.debug("t_data: %s %s" % (type(t_data), t_data))
             _LOG.debug("r.status_code: %s" % r.status_code)
             _LOG.debug("r.text: %s" % r.text)
-            _LOG.debug("r.headers: %s" % r.headers)
             assert r.status_code == cfg.SUCCESS
             assert r.text == ""
-            assert r.headers[cfg.RES_RTN] == expected
+            assert str(t_data) == str(expected)
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_TypingData_function\n\n")
 
-# @pytest.mark.skip("Successfully completed")
 
-
+# @pytest.mark.skip("PASSED")
 def test_DistractionData_function():
     ''' test_DistractionData_function
     '''
@@ -258,7 +262,6 @@ def test_DistractionData_function():
 #--------------------------------------------------------------------------------------------------
     with rq.Session() as s:
         files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
-
         data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
         r = s.post(cfg.SERVER, data=data, files=files)
         assert r.status_code == cfg.SUCCESS
@@ -280,6 +283,7 @@ def test_DistractionData_function():
     _LOG.trace("Leave test_DistractionData_function")
 
 
+# @pytest.mark.skip("PASSED")
 def test_Time_function():
     _LOG.trace("Enter test_Time_function")
     #-------------------------------------------------------------------------------
