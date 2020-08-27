@@ -1,4 +1,4 @@
-# !./venv/bin
+# ! ./venv/bin
 # -*- coding: utf-8 -*-
 ''' Server
 
@@ -8,7 +8,7 @@
 data, returns data to client in response.
 
 __CreatedOn__ = "2019-11-05"
-__UpdatedOn__ = "2020-08-19"
+__UpdatedOn__ = "2020-08-26"
 
 @author: Den
 @copyright: Copyright © 2019-2020 Den
@@ -40,7 +40,7 @@ import canister    # @UnresolvedImport
 from canister import session    # @UnresolvedImport
 import cfg
 import TaskData as TD
-# from Log import Log    # ; TlLog = Log()    # TlLog ID is made global
+from Log import Log; TlLog = Log()    # TlLog ID is made global
 
 bt_app.config.load_config('./conf/canister.cfg')
 bt_app.install(canister.Canister())
@@ -56,20 +56,24 @@ def ReceiveFile():
         Receive task file from client
         Create TaskData instance from file
         Store TaskData instance in session data
+        Create Log instance
+        Open Log instance with TaskData instance
 
     @precondition: request.files data contains - {'Task-File': <bytes>, 'Msg-Type': "ReceiveFile"}
 
     @postcondition: response status code which contains - 200; or
                     response status code which contains - 404 | 406.
+                    session.data contains task_data
+                    session.data contains Log.
 
     @return: status code 200; or
              status code 404 | 406.
         @rtype: status code
     '''
-    _LOG.trace("\n\n======  ReceiveFile  ===================================")
+    bt_app.log.trace("\n\n======  ReceiveFile  ===================================")
     _LOG.trace("Enter Server.ReceiveFile")
 #------------------------------------------------------------------------------
-    # Check if file exists in upload
+    # Check if file exists in upload and extract
     try:
         tskfil = bt.request.files[cfg.REQ_TASKFILE].file.read()
     except (bt.BottleException, IOError, TypeError, ValueError) as e:
@@ -88,15 +92,15 @@ def ReceiveFile():
         _LOG.trace("Leave ReceiveFile returning HTTP status code %s" % cfg.ERR_INVALID_DATA_T)
         Cancel("Unable to create TaskData from uploaded taskfile")
         return
-
     # Assign task data to session data
     session.data[cfg.SESSION_TASKDATA] = td
     _LOG.debug("Task data in session data:\n%s" % session.data[cfg.SESSION_TASKDATA])
 
-    # Start log with task data and assign to session data
-    # TlLog.open(td)    # Open TL log
-    # session.data[cfg.SESSION_LOG] = TlLog
-    # _LOG.debug("Log in session data:\n%s" % session.data[cfg.SESSION_LOG])
+    # Open log with task data and assign to session data
+    TlLog.open(td)    # Open TL log
+    session.data[cfg.SESSION_LOG] = TlLog
+
+    _LOG.debug("Log in session data:\n%s" % session.data[cfg.SESSION_LOG])
 
     bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
@@ -114,7 +118,6 @@ def SendClientConfig():
         td = session.data.get(cfg.SESSION_TASKDATA, None)
 #         TlLog = session.data.get(cfg.SESSION_LOG, None)
     except (bt.BottleException, TypeError, ValueError) as e:
-        bt.response.status = cfg.ERR_SERVER_ERROR
         _LOG.exception("Error retrieving session data in Server.SendClientConfig\n  %s" % e)
         Cancel("Error retrieving session data in Server.SendClientConfig")
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_SERVER_ERROR_T)
@@ -123,7 +126,6 @@ def SendClientConfig():
 #     _LOG.debug("TlLog:\n%s" % TlLog)
 
     if td is None:
-        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
         Cancel("No ClientConfigData found in session data for Server.SendClientConfig.")
         _LOG.trace("Leave Server.SendClientConfig returning HTTP status code: %s" % cfg.ERR_NOT_FOUND_ERROR_T)
         return
@@ -295,32 +297,132 @@ def SendDistractionData():
 def SendSummary():
     ''' SendSummary --
     '''
-    _LOG.trace("  Enter Server.SendSummary")
+    _LOG.trace("\n\n======  SendSummary  ===================================")
+    _LOG.trace("Enter Server.SendSummary")
 #------------------------------------------------------------------------------
+    try:
+        log = session.data.get(cfg.SESSION_LOG, None)
+        summary = session.data.get(cfg.SESSION_SUMMARY, None)
+    except bt.BottleError as e:
+        bt.response.status = cfg.ERR_SERVER_ERROR
+        _LOG.exception("Cannot retrieve session data in Server.SendSummary\n  %s:" % e)
+        _LOG.trace("Leave Server.SendSummary returning %s" % cfg.ERR_SERVER_ERROR_T)
+        Cancel("Cannot retrieve session data in Server.SendSummary")
+        return
 
+    if log is None:
+        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
+        _LOG.error("Log data not found in Server.SendSummary")
+        _LOG.trace("Leave server.SendSummary returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+        Cancel("Log data not found in Server.SendSummary")
+        return
+
+    if summary is None:
+        bt.response.status = cfg.ERR_NOT_FOUND_ERROR
+        _LOG.error("Summary data not found in Server.SendSummary")
+        _LOG.trace("Leave server.SendSummary returning %s" % cfg.ERR_NOT_FOUND_ERROR_T)
+        Cancel("Summary data not found in Server.SendSummary")
+        return
+
+    _LOG.debug("log: %s" % log)
+    _LOG.debug("summary: %s" % summary)
+    TlLog.add(cfg.LOG_SUMMARY)
+    bt.response.set_header({cfg.RES_RTN: {cfg.RES_SUMMARY: summary, cfg.RES_LOG: log}})
+    bt.response.status = cfg.SUCCESS
 #------------------------------------------------------------------------------
-    _LOG.trace("  Leave Server.SendSummary")
+    _LOG.trace("Leave Server.SendSummary returning %s" % cfg.SUCCESS_T)
 
 
-def Cancel(msg):
-#     '''  Cancel--
-#
-#     '''
+def Cancel(msg=""):
+    '''  Server.Cancel--
+    @summary: Shuts down the server and sends a 'canceled' message back to the client (if called by
+    the server).
+
+    @note: May be called by the client with msg in the data dict, or by the server with the param
+    msg if an error occurs, to shut down the server.
+
+    @param msg: A message to explain the reason to cancel the server. (called by server)
+        @type msg: str
+
+    @param data: {'msg': msg}.  (called by client)
+        @type: dict
+
+    @return: status:  Error status or Success
+        @rtype: str
+
+    @return: return: Server Canceled message + msg
+        @rtype: str
+    '''
     _LOG.trace("Enter Server.Cancel with %s" % msg)
-# #------------------------------------------------------------------------------
-    # TlLog.add("CANCEL", msg)
-    # _LOG.info("\nCancel: %s\n------------------\n\n" % msg)
-    print("\nCancel: %s\n------------------\n\n" % msg)
+    #------------------------------------------------------------------------------
+    _LOG.info("Cancel: %s" % msg)
 
-#     try:
-#         del session
-#     except bt.BottleException as e:
-#         _LOG.exception("Error terminating a session.\n  %s" % e)
-# #------------------------------------------------------------------------------
-    _LOG.trace("Leave Server.Cancel")
+    # TODO: Add 'delete session' and 'delete cookie' functions to cancel()
+    def cancel(msg=""):    # Shut down server
+        ''' Server.Cancel.cancel --
+        @summary: Performs the actual shutdown of the Server --
+            Close log
+            Return the log and summary
+            Delete the session   TBD
+            Delete the cookie    TBD
+
+        @param msg: Optional message of the reason to cancel. (if any)
+
+        @return: return -
+            @rtype: dict
+                @return: log:
+                    @rtype string (log repr)
+                @return: summary:
+                    @rtype: string (summary repr)
+                @return: msg:
+                    @rtype: string  (server cancel message)
+
+        @return: status -
+                @return: server canceled message
+                    @rtype: string cfg.CANCELED
+        '''
+        _LOG.trace("Enter Server.Cancel.cancel")
+        #--------------------------------------------------------------------------------
+        # TODO: Fix cancel keys
+        log = session.data.get(cfg.SESSION_LOG, "log data not stored")
+        summary = session.data.get(cfg.SESSION_SUMMARY, "summary not stored")
+        rtn = {
+            cfg.RES_LOG: log,
+            cfg.RES_SUMMARY: summary,
+            cfg.RES_CANCEL_MSG: msg,
+            }
+        bt.response.status = cfg.CANCELED
+        bt.response.set_header(cfg.RES_RTN, rtn)
+        TlLog.add(cfg.LOG_CANCEL, msg)
+        _LOG.info("SERVER CANCELED   %s" % msg)
+        #--------------------------------------------------------------------------------
+        _LOG.trace("Leave Server.Cancel.cancel")
+
+    #-- Param message ----------------------------------------------------------------------------------------------
+    if msg:
+        cancel(msg)    # existence of param msg means - Called from server w/message
+        return
+
+    #-- Get uploaded message, if any ----------------------------------------------------------------------------------------------
+    try:    # up_msg - Called from client or called from server w/o message
+        up_msg = bt.request.forms.get(cfg.REQ_CANCEL_MSG, None)
+    except (bt.BottleException, ValueError, TypeError) as e:
+        _LOG.exception("Unable to extract cancel message from request.forms.\n  %s" % e)
+        _LOG.trace("Leave Server.Cancel returning %s" % cfg.CANCELED_T)
+        cancel("Unable to extract cancel message from request.forms.")
+        return
+    _LOG.debug("up_msg: %s" % up_msg)
+    if up_msg is None:
+        _LOG.error("The up_msg is not in request.forms.")
+        _LOG.trace("Leave Server.Cancel returning %s" % cfg.CANCELED_T)
+        cancel()
+        return
+    cancel(up_msg)    # Generic message
+    #------------------------------------------------------------------------------
+    _LOG.trace("Leave Server.Cancel returning %s" % cfg.CANCELED)
 
 
-# region - Dispatcher =============================================================================
+    # region - Dispatcher =============================================================================
 svr_func_select = {
     cfg.REQ_TASKFILE: ReceiveFile,
     cfg.REQ_CLIENT_CONFIG_DATA: SendClientConfig,
@@ -329,6 +431,7 @@ svr_func_select = {
     cfg.REQ_SUMMARY: SendSummary,
     cfg.CANCEL: Cancel,
     }
+
 # endregion =======================================================================================
 
 
@@ -343,14 +446,13 @@ def server_post():
 
     @postcondition: bt.response.headers contains data to be returned to the client (if any).
     '''
-    _LOG.trace("\n\n==  SERVER  ===================================")
+    bt_app.log.trace("\n\n==  SERVER  ===================================")
     _LOG.trace("Enter server.server_post")
 #---------------------------------------------------------------------------------------------------
     # Check if Msg-Type header exists
     msg_type = bt.request.forms.get(cfg.REQ_MSG_TYPE, None)
     _LOG.debug("msg_type: %s" % msg_type)
     if msg_type is None:
-        bt.response.status = cfg.ERR_CLIENT_ERROR
         _LOG.trace("Leave Server.server_post returning: %s" % (cfg.ERR_CLIENT_ERROR_T))
         Cancel("There is no 'Msg-Type' header in the request.")
         return
@@ -359,7 +461,6 @@ def server_post():
     svr_func = svr_func_select.get(msg_type, None)
     _LOG.debug("svr_func: %s" % svr_func)
     if svr_func is None:
-        bt.response.status = cfg.ERR_NOT_IMPLEMENTED_ERROR
         _LOG.trace("Leave Server.server_post returning %s" % cfg.ERR_NOT_IMPLEMENTED_ERROR_T)
         Cancel("The requested function is not implemented in server.")
         return
@@ -376,12 +477,13 @@ def time_post():
     ''' Server.time_post --
     @summary: Receives post requests to path "/time", returns time as time.time float.
     '''
+    _LOG.trace("\n\n==  TIME  ===================================")
     _LOG.trace("Enter Server.time_post")
 #---------------------------------------------------------------------------------------------------
-    rtn = time.time()
+    rtn = str(int(time.time()))
 #------------------------------------------------------------------------------
     _LOG.trace("Leave Server.time_post returning: %s" % rtn)
-    return str(rtn)
+    return rtn
 
 
 if __name__ == '__main__':

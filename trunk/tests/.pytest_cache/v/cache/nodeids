@@ -33,5 +33,7 @@
   "test_server.py::test_FOW_get",
   "test_server.py::test_terminate_session_function",
   "test_server.py::test_Time_function",
-  "test_server.py::test_Terminate_session_function"
+  "test_server.py::test_Terminate_session_function",
+  "test_server.py::test_Summary",
+  "test_server.py::test_Cancel"
 ]
