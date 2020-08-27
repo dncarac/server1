@@ -7,7 +7,7 @@ First test module
 Testing module for setting up Client-backup_server_folder communications
 
 __CreatedOn__="2018-04-02"
-__UpdatedOn__="2020-08-19"
+__UpdatedOn__="2020-08-26"
 
 @author: Den
 @copyright: Copyright © 2018-2020 Den
@@ -42,15 +42,14 @@ def test_header_no_msg_type():
 #--------------------------------------------------------------------------------
     r = rq.post(cfg.SERVER)
 
-#     _LOG.debug("r.status_code: %s" % r.status_code)
+    _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    assert r.status_code == cfg.ERR_CLIENT_ERROR
+    _LOG.debug("r.headers[cfg.RES_RTN]: %s" % r.headers[cfg.RES_RTN])
+    assert r.status_code == cfg.CANCELED
     assert r.text == ""
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_header_no_msg_type")
-
-# @pytest.mark.skip("Successfully completed")
 
 
 # @pytest.mark.skip("PASSED")
@@ -66,7 +65,7 @@ def test_msg_type_bad_function():
     _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    assert r.status_code == cfg.ERR_NOT_IMPLEMENTED_ERROR
+    assert r.status_code == cfg.CANCELED
     assert r.text == ""
 #--------------------------------------------------------------------------------
     _LOG.trace("Leave test_msg_type_bad_function")
@@ -74,6 +73,7 @@ def test_msg_type_bad_function():
 
 # @pytest.mark.skip("PASSED")
 def test_SendFile_function_FOW():
+
     ''' test_SendFile_function_FOW --
     '''
     _LOG.trace("Enter test_SendFile_function_FOW")
@@ -91,8 +91,6 @@ def test_SendFile_function_FOW():
         assert r.text == ""
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_SendFile_function_FOW")
-
-# @pytest.mark.skip("Successfully completed")
 
 
 # @pytest.mark.skip("PASSED")
@@ -115,8 +113,6 @@ def test_SendFile_function_TL():
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_SendFile_function_TL")
 
-# @pytest.mark.skip("Successfully completed")
-
 
 # @pytest.mark.skip("PASSED")
 def test_ClientConfig_no_session_data():
@@ -131,8 +127,8 @@ def test_ClientConfig_no_session_data():
     _LOG.debug("r.status_code: %s" % r.status_code)
     _LOG.debug("r.text: %s" % r.text)
     _LOG.debug("r.headers: %s" % r.headers)
-    _LOG.debug("r.headers[cfg.RTN_KEY]: %s" % r.headers.get(cfg.RES_RTN, None))
-    assert r.status_code == cfg.ERR_NOT_FOUND_ERROR
+    _LOG.debug("r.headers[cfg.RES_RTN]: %s" % r.headers.get(cfg.RES_RTN, None))
+    assert r.status_code == cfg.CANCELED
     assert r.text == ""
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_session_data\n\n")
@@ -167,7 +163,7 @@ def test_ClientConfig_no_client_config_data():
         _LOG.debug("r.status_code: %s" % r.status_code)
         _LOG.debug("r.text: %s" % r.text)
         _LOG.debug("r.headers: %s" % r.headers)
-        assert r.status_code == cfg.ERR_NOT_FOUND_ERROR
+        assert r.status_code == cfg.CANCELED
         assert r.text == ""
 #--------------------------------------------------------------------------------------------------
     _LOG.trace("Leave test_ClientConfig_no_client_config_data\n\n")
@@ -284,45 +280,121 @@ def test_DistractionData_function():
 
 
 # @pytest.mark.skip("PASSED")
+def test_Summary():
+    ''' test_server..test_Summary --
+    '''
+    _LOG.trace("Enter test_server..test_Summary")
+#--------------------------------------------------------------------------------
+    with rq.Session() as s:
+        _LOG.info("\n\nSend file")
+        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "test typing data task.tsk", 'rb').read()}
+        _LOG.debug("files sent: %s" % files)
+        data = {cfg.REQ_MSG_TYPE: cfg.REQ_TASKFILE}
+        _LOG.debug("data sent: %s" % data)
+
+        r = s.post(cfg.SERVER, data=data, files=files)
+
+        _LOG.debug("r.status_code: %s" % r.status_code)
+        _LOG.debug("r.text: %s" % r.text)
+        _LOG.debug("r.headers: %s" % r.headers)
+        assert r.status_code == cfg.SUCCESS
+        assert r.text == ""
+
+#------ Send lines----------------------------------------------------------------------------------
+        _LOG.info("\n\nStart Send lines !!")
+        send_list = [cfg.START_TASK, "Line 1", "Line 2"]
+        expected_list = ["{'title': 'Typing Dialog Title', 'line': 'Line 1', 'msg': 'Msg'}",
+                         "{'title': 'Typing Dialog Title', 'line': 'Line 2', 'msg': 'Msg'}",
+                         cfg.END_TASK
+                        ]
+        for sent, expected in zip(send_list, expected_list):
+            _LOG.debug("sent to server %s ... expected from server %s}'" % (sent, expected))
+            data = {cfg.REQ_MSG_TYPE: cfg.REQ_TYPED_LINE,
+                    cfg.REQ_TYPED_LINE: sent}
+            _LOG.debug("data: %s" % data)
+
+            r = s.post(cfg.SERVER, data=data)
+
+            t_data = r.headers[cfg.RES_RTN]    # str
+            _LOG.debug("t_data: %s %s" % (type(t_data), t_data))
+            _LOG.debug("r.status_code: %s" % r.status_code)
+            _LOG.debug("r.text: %s" % r.text)
+            assert r.status_code == cfg.SUCCESS
+            assert r.text == ""
+            assert str(t_data) == str(expected)
+
+#-------Get Summary ------------------------------------------------------------------------------------------
+        with rq.Session() as s:
+            data = {cfg.REQ_MSG_TYPE: cfg.REQ_SUMMARY}
+            _LOG.debug("data: %s" % data)
+    #
+            r = s.post(cfg.SERVER, data=data)
+            t_data = r.headers[cfg.RES_RTN]    # str
+
+#--------------------------------------------------------------------------------
+
+    _LOG.trace("Leave test_server..test_Summary")
+
+
+# @pytest.mark.skip("PASSED")
+def test_Cancel():
+    ''' test_server.test_Cancel --
+    '''
+    _LOG.trace("Enter test_server.test_Cancel")
+#--------------------------------------------------------------------------------
+    up_msg = "test_Cancel up message"
+
+    # Cancel from server, no msg_type
+    with rq.Session() as s:
+        r = s.post(cfg.SERVER)
+    assert r.status_code == cfg.CANCELED
+
+    # Cancel from server, msg_type but non-implemented function
+    data = {cfg.REQ_MSG_TYPE: "dummy"}
+    with rq.Session() as s:
+        r = s.post(cfg.SERVER, data=data)
+    assert r.status_code == cfg.CANCELED
+
+    # Cancel from client, normal case
+    data = {cfg.REQ_MSG_TYPE: cfg.CANCEL, cfg.REQ_CANCEL_MSG: up_msg}
+    _LOG.debug("data: %s" % data)
+
+    with rq.Session() as s:
+        r = s.post(cfg.SERVER, data=data)
+
+    assert r.status_code == cfg.CANCELED
+
+    # Cancel from client, no message
+    data = {cfg.REQ_MSG_TYPE: cfg.CANCEL}
+    _LOG.debug("data: %s" % data)
+
+    with rq.Session() as s:
+        r = s.post(cfg.SERVER, data=data)
+
+    assert r.status_code == cfg.CANCELED
+
+#--------------------------------------------------------------------------------
+    _LOG.trace("Leave test_server.test_Cancel")
+
+
+# @pytest.mark.skip("PASSED")
 def test_Time_function():
     _LOG.trace("Enter test_Time_function")
     #-------------------------------------------------------------------------------
     import time
-    rtn = time.time()
+    r = rq.post(cfg.SERVER + "time")
+    assert type(r.text) == str
+    rtn = int(r.text)
+    local = int(time.time())
     _LOG.debug("Server time.time(): %s" % rtn)
-    assert type(rtn) == float
+    _LOG.debug("Local time.time(): %s" % int(time.time()))
+    assert abs(local - rtn) < 1
     #-------------------------------------------------------------------------------
     _LOG.trace("Leave test_Time_function returning\n %s" % rtn)
 
 
-@pytest.mark.skip("To be developed")
-def test_Terminate_session_function():
-    ''' test_DistractionData_function
-    '''
-    _LOG.trace("Enter test_DistractionData_function")
-#--------------------------------------------------------------------------------------------------
-    with rq.Session() as s:
-        files = {cfg.REQ_TASKFILE: open(cfg.TASK_PATH + "../tasks/test distraction data task.tsk", 'rb')}
-
-        data = {cfg.REQ_MSG_TYPE: "SendFile"}
-        r = s.post(cfg.SERVER, data=data, files=files)
-        assert r.status_code == cfg.SUCCESS
-        assert r.text == ""
-
-        data = {cfg.REQ_MSG_TYPE: "Cancel"}
-        r = s.post(cfg.SERVER, data=data)
-        print("session s: %s" % s)
-        print("r.status_code: %s" % r.status_code)
-        print("r.text: %s" % r.text)
-        assert r.status_code == cfg.SUCCESS
-        assert r.text == ""
-
-#--------------------------------------------------------------------------------------------------
-    _LOG.trace("Leave test_DistractionData_function")
-
-
 if __name__ == "__main__":
-#     print("Start\n")
+
 #     s = rq.Session()
 #     print(s)
 #     with rq.Session() as s:
